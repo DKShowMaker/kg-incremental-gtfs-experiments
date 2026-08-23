@@ -1,0 +1,10 @@
+tag: r50s1
+k: 4
+partition_rows: 831
+phase_compute_delta_s: 0.335
+phase_partition_s: 0.010
+phase_normalize_s: 0.104
+phase_dispatch_s: 0.014
+phase_wait_workers_s: 0.628
+phase_merge_stale_apply_s: 0.399
+elapsed_seconds: 1.490

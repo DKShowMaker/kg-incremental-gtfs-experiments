@@ -1,0 +1,10 @@
+tag: u25s1
+k: 4
+partition_rows: 71693
+phase_compute_delta_s: 4.491
+phase_partition_s: 0.617
+phase_normalize_s: 0.096
+phase_dispatch_s: 0.010
+phase_wait_workers_s: 2.860
+phase_merge_stale_apply_s: 6.641
+elapsed_seconds: 14.715

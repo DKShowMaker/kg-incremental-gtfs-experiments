@@ -1,0 +1,14 @@
+tag: abli_c20_r5
+k: 4
+partition_rows: 172063
+phase_compute_delta_s: 4.158
+phase_partition_s: 0.789
+phase_normalize_s: 0.094
+phase_dispatch_s: 0.006
+phase_wait_workers_s: 3.859
+phase_merge_stale_apply_s: 6.785
+conflict_dup_rows: 28677
+total_retries: 0
+lock_wait_ms_total: 31
+lock_contention_total: 2
+elapsed_seconds: 15.690

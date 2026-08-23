@@ -1,0 +1,14 @@
+tag: abl_lock_c020_s4
+k: 4
+partition_rows: 172063
+phase_compute_delta_s: 4.179
+phase_partition_s: 0.841
+phase_normalize_s: 0.102
+phase_dispatch_s: 0.006
+phase_wait_workers_s: 3.708
+phase_merge_stale_apply_s: 7.114
+conflict_dup_rows: 28677
+total_retries: 0
+lock_wait_ms_total: 15
+lock_contention_total: 1
+elapsed_seconds: 15.951

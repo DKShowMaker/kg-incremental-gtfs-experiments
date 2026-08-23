@@ -1,0 +1,27 @@
+# 分布式增量更新实验编排：1个Redis + k个worker（--scale worker=k）。
+# 所有需要交换数据的路径通过共享卷传递，任务消息只传文件路径不搬数据。
+# 注意：卷的容器内挂载点与宿主机绝对路径保持一致
+# （/home/ztr/KG/dist_work），这样normalize_mapping.py写进mapping的
+# 宿主机绝对路径在worker容器内同样有效。若代码库迁移到其他位置，
+# 需同步修改此处的两个路径。
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:6379:6379"
+
+  worker:
+    build:
+      context: ./dist
+      dockerfile: Dockerfile.worker
+    volumes:
+      - ./dist_work:/home/ztr/KG/dist_work
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - CONSISTENCY_MODE=${ABLATION_MODE:-occ}   # occ=乐观版本号 | lock=全局锁(消融A2)
+    cpus: 1
+    mem_limit: 2g
+    restart: unless-stopped   # RMLMapper未预见的错误路径若exit带崩JVM，自动拉起
+    depends_on:
+      - redis

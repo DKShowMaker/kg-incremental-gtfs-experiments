@@ -1,0 +1,14 @@
+tag: abl_occ_c00_s4
+k: 4
+partition_rows: 143386
+phase_compute_delta_s: 4.991
+phase_partition_s: 0.683
+phase_normalize_s: 0.112
+phase_dispatch_s: 0.034
+phase_wait_workers_s: 3.880
+phase_merge_stale_apply_s: 6.633
+conflict_dup_rows: 0
+total_retries: 0
+lock_wait_ms_total: 0
+lock_contention_total: 0
+elapsed_seconds: 16.332

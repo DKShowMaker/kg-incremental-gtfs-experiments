@@ -1,0 +1,14 @@
+tag: ablio_c20_r2
+k: 4
+partition_rows: 172063
+phase_compute_delta_s: 4.117
+phase_partition_s: 0.776
+phase_normalize_s: 0.096
+phase_dispatch_s: 0.027
+phase_wait_workers_s: 5.096
+phase_merge_stale_apply_s: 6.872
+conflict_dup_rows: 28677
+total_retries: 2
+lock_wait_ms_total: 0
+lock_contention_total: 0
+elapsed_seconds: 16.985

@@ -1,0 +1,10 @@
+tag: u25s3
+k: 4
+partition_rows: 71693
+phase_compute_delta_s: 5.712
+phase_partition_s: 0.603
+phase_normalize_s: 0.110
+phase_dispatch_s: 0.021
+phase_wait_workers_s: 2.326
+phase_merge_stale_apply_s: 6.336
+elapsed_seconds: 15.108

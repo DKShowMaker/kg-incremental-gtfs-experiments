@@ -1,0 +1,14 @@
+tag: abl_occ_c020_s5
+k: 4
+partition_rows: 172063
+phase_compute_delta_s: 5.661
+phase_partition_s: 1.075
+phase_normalize_s: 0.150
+phase_dispatch_s: 0.063
+phase_wait_workers_s: 6.389
+phase_merge_stale_apply_s: 8.137
+conflict_dup_rows: 28677
+total_retries: 2
+lock_wait_ms_total: 0
+lock_contention_total: 0
+elapsed_seconds: 21.476

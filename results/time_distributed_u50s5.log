@@ -1,0 +1,10 @@
+tag: u50s5
+k: 4
+partition_rows: 143386
+phase_compute_delta_s: 4.612
+phase_partition_s: 1.185
+phase_normalize_s: 0.098
+phase_dispatch_s: 0.028
+phase_wait_workers_s: 3.955
+phase_merge_stale_apply_s: 7.722
+elapsed_seconds: 17.599

@@ -1,0 +1,1246 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://mapping.example.com/map_feed_0> a rr:TriplesMap ;
+    rdfs:label "feed" ;
+    rml:logicalSource <http://mapping.example.com/uuid/4d18e8b9-16b0-41dc-abad-ad23c34147f6> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/64f91403-8e08-4634-8609-7ce500fb374e>,
+        <http://mapping.example.com/uuid/6f7b7c51-0f08-418f-92c2-0b62ed1d7754>,
+        <http://mapping.example.com/uuid/9167cdf4-1732-4ac1-b6a3-130d9b4cdb54>,
+        <http://mapping.example.com/uuid/9439e2d3-fdf1-4b8e-b417-addf933395e4>,
+        <http://mapping.example.com/uuid/d5020de3-6de8-4bab-8d97-eb11d80d07bd>,
+        <http://mapping.example.com/uuid/d849e47c-0d5f-4b44-b8ae-247bdb0885de>,
+        <http://mapping.example.com/uuid/f9ca7e34-72ae-4629-b3b3-a1f9c0a972ca> ;
+    rr:subjectMap <http://mapping.example.com/uuid/235fe843-84ec-47d2-80c9-706616be7228> .
+
+<http://mapping.example.com/map_frequencies_0> a rr:TriplesMap ;
+    rdfs:label "frequencies" ;
+    rml:logicalSource <http://mapping.example.com/uuid/05612e3d-0751-4906-866e-23dd89e205e5> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/4b5a7718-d720-42cd-aeae-b27df2c3cd12>,
+        <http://mapping.example.com/uuid/aeca91bc-46df-4764-a74e-a14a142e989d>,
+        <http://mapping.example.com/uuid/bc6d26a3-fd80-4e6e-999e-978281c739f1>,
+        <http://mapping.example.com/uuid/ce767639-e31d-4793-99f9-555fc22db350>,
+        <http://mapping.example.com/uuid/e46f0087-4c9c-4957-a772-f765ff3f2630>,
+        <http://mapping.example.com/uuid/fe745827-0049-49f8-abc0-a3d4dfbfa572> ;
+    rr:subjectMap <http://mapping.example.com/uuid/e5d081b2-e038-4b79-a096-7bb9201a3b88> .
+
+<http://mapping.example.com/map_shape_points_0> a rr:TriplesMap ;
+    rdfs:label "shape_points" ;
+    rml:logicalSource <http://mapping.example.com/uuid/105eaa13-d346-4b19-9797-811850d8514d> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/28595d6e-be78-472f-91f9-2130819bb20e>,
+        <http://mapping.example.com/uuid/576e5e8c-c38e-4145-a462-25bdbf32b64a>,
+        <http://mapping.example.com/uuid/70bf2ec6-62cf-46e2-8b5b-d53c03051512>,
+        <http://mapping.example.com/uuid/7f596952-60cc-4971-b85c-3f2b7ce35283>,
+        <http://mapping.example.com/uuid/f0945056-4647-4610-9716-626f46c61adf> ;
+    rr:subjectMap <http://mapping.example.com/uuid/7770b97b-c3f9-445c-be38-081ec9bc8e57> .
+
+<http://mapping.example.com/map_stoptimes_0> a rr:TriplesMap ;
+    rdfs:label "stoptimes" ;
+    rml:logicalSource <http://mapping.example.com/uuid/c554dad1-d51c-4a2a-9151-dfe460f3360d> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/6f5aab73-982c-4b6b-8d5f-7c029869594b>,
+        <http://mapping.example.com/uuid/6fbd3df7-2274-4621-bb13-63de04d4a0d8>,
+        <http://mapping.example.com/uuid/70169d84-6f4d-4235-aa1f-8676dbe63b27>,
+        <http://mapping.example.com/uuid/7196a2b9-ab42-4c55-b02e-5a07ee2dece9>,
+        <http://mapping.example.com/uuid/97ba5531-d018-4488-8bab-feec5791d14f>,
+        <http://mapping.example.com/uuid/ab9984e2-d0dd-43d6-bb3c-515d354b54f0>,
+        <http://mapping.example.com/uuid/aca62c42-7a09-4d69-868b-fb1bcc53c94b>,
+        <http://mapping.example.com/uuid/b87c8fe2-bb3c-4a2a-9744-37b6d736cd73>,
+        <http://mapping.example.com/uuid/bbeee353-2667-48e7-86b5-2831ec43c1bf>,
+        <http://mapping.example.com/uuid/e2d796b5-7289-4167-864d-8b85c6ad2293> ;
+    rr:subjectMap <http://mapping.example.com/uuid/a65bf6c8-9445-48d6-b414-ea013fb3042b> .
+
+<http://mapping.example.com/uuid/4ae7cb40-d60c-42b9-a6c3-6c98a968105a> rr:child "shape_id" ;
+    rr:parent "shape_id" .
+
+<http://mapping.example.com/map_agency_0> a rr:TriplesMap ;
+    rdfs:label "agency" ;
+    rml:logicalSource <http://mapping.example.com/uuid/b30648ef-e2ea-4e4f-b4ee-cf92890f81cc> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/01c62be8-336a-4f9f-a63b-43ab18445cce>,
+        <http://mapping.example.com/uuid/099251ef-4f3a-4585-a6dc-dbeb5111154f>,
+        <http://mapping.example.com/uuid/41eae96c-4278-4755-8bad-082bd7661360>,
+        <http://mapping.example.com/uuid/7b40a447-c287-45b8-83ff-b6a842d7b7d5>,
+        <http://mapping.example.com/uuid/7fe33243-9705-48cf-b584-7059defaebbd>,
+        <http://mapping.example.com/uuid/f8c2f779-b221-4b65-a926-8b8b0e41ab77>,
+        <http://mapping.example.com/uuid/fb7f4dde-c73b-48ee-8361-a6be73311573> ;
+    rr:subjectMap <http://mapping.example.com/uuid/723176f0-43c7-4e5e-a8be-99f5784f13cf> .
+
+<http://mapping.example.com/map_calendar_date_rules_0> a rr:TriplesMap ;
+    rdfs:label "calendar_date_rules" ;
+    rml:logicalSource <http://mapping.example.com/uuid/eccada16-9d2d-4ecf-bbd5-af5167b4422b> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/82985d2d-79d7-427a-a725-defa6602a9a7>,
+        <http://mapping.example.com/uuid/ee0143e7-4dc6-4636-997d-95633415d179>,
+        <http://mapping.example.com/uuid/eea28676-48c9-4151-a671-a31cfa237b39> ;
+    rr:subjectMap <http://mapping.example.com/uuid/bda98571-9124-46eb-8a87-b67696c823c7> .
+
+<http://mapping.example.com/map_calendar_rules_0> a rr:TriplesMap ;
+    rdfs:label "calendar_rules" ;
+    rml:logicalSource <http://mapping.example.com/uuid/e46352ce-b794-4e94-a2ad-fa5d5e2582fd> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/08324c2d-9664-4640-adca-519ad4fe0179>,
+        <http://mapping.example.com/uuid/2bd99493-16ad-4c2b-abe3-1aeaabc41588>,
+        <http://mapping.example.com/uuid/2be5899a-1c08-418e-855c-b64dedc02dda>,
+        <http://mapping.example.com/uuid/83a242fe-3b44-4d51-9761-fb1c5831c3df>,
+        <http://mapping.example.com/uuid/a10f634e-d66d-4a73-9adf-a243d8c8a4ea>,
+        <http://mapping.example.com/uuid/b1eaf4bf-6320-4c0f-a554-1ff7784c6a82>,
+        <http://mapping.example.com/uuid/b68d8323-08e1-4f74-84a8-8930a6b38977>,
+        <http://mapping.example.com/uuid/bbcc3018-6d1e-427b-b9e1-5fbe00e1f0f3>,
+        <http://mapping.example.com/uuid/c5b745fa-ff42-4453-a9fb-b18bd8271753>,
+        <http://mapping.example.com/uuid/ca2be2c1-0db7-4728-ab24-1c19ff9a1cbd> ;
+    rr:subjectMap <http://mapping.example.com/uuid/8d1997c8-fc6a-4b61-b378-9d3380a13de0> .
+
+<http://mapping.example.com/map_routes_0> a rr:TriplesMap ;
+    rdfs:label "routes" ;
+    rml:logicalSource <http://mapping.example.com/uuid/d1bfeeb2-90dc-4c4f-851f-24ea07cb6467> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/327b7120-59f3-4b52-a554-83cbd2968183>,
+        <http://mapping.example.com/uuid/4014d59a-489d-47e3-b81c-721fddff1f3c>,
+        <http://mapping.example.com/uuid/43e125b7-99ef-4120-86e1-b6acd8f6a53b>,
+        <http://mapping.example.com/uuid/459f04d5-90d2-4fd2-898b-a4746c1baf3d>,
+        <http://mapping.example.com/uuid/5648fb4b-bb01-4f30-b4c4-640434d40000>,
+        <http://mapping.example.com/uuid/6674cfb9-cc7c-4364-a06e-b4916496a6d8>,
+        <http://mapping.example.com/uuid/ba570608-89a3-4e2e-97f5-b4994c46a8b4>,
+        <http://mapping.example.com/uuid/cc7c3a25-5113-4d61-b021-5db6d61b9c1f>,
+        <http://mapping.example.com/uuid/d16bcaf9-9c0b-4436-9958-4b40ec697dc8> ;
+    rr:subjectMap <http://mapping.example.com/uuid/fa5ffe8e-0ca4-43b4-8ef2-e41baa9f82ce> .
+
+<http://mapping.example.com/map_services1_0> a rr:TriplesMap ;
+    rdfs:label "services1" ;
+    rml:logicalSource <http://mapping.example.com/uuid/106a88df-e411-45ab-aff5-1a8fd3e417b4> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/43c0dbd8-0814-45a8-bde4-bdb694fff05e>,
+        <http://mapping.example.com/uuid/56421ac2-0314-40ba-ba84-813dd7bdc22b> ;
+    rr:subjectMap <http://mapping.example.com/uuid/3f17dc8f-103c-49c2-b167-13f54c8db5d9> .
+
+<http://mapping.example.com/map_services2_0> a rr:TriplesMap ;
+    rdfs:label "services2" ;
+    rml:logicalSource <http://mapping.example.com/uuid/6c77b50d-921d-4c18-9b52-0fb831a9e51c> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/2a888a2d-0f4b-460c-b14a-89aa97896bd9>,
+        <http://mapping.example.com/uuid/cef88637-0d33-4bfe-a82b-41c64e5ea887> ;
+    rr:subjectMap <http://mapping.example.com/uuid/dcc6c6b3-74bd-457f-a759-854910eb60d9> .
+
+<http://mapping.example.com/map_shapes_0> a rr:TriplesMap ;
+    rdfs:label "shapes" ;
+    rml:logicalSource <http://mapping.example.com/uuid/ab850855-30ef-4a6b-95bb-6dae4cbac2f3> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/426a9ee3-94b4-4fad-b143-18e4b10c1c98>,
+        <http://mapping.example.com/uuid/4cf4fdeb-edf0-4d47-9205-46c07509007a> ;
+    rr:subjectMap <http://mapping.example.com/uuid/dc3c0e45-96c6-4cf6-8563-7f70f63ca673> .
+
+<http://mapping.example.com/uuid/0188904b-61c7-459c-9966-2e14db6d5b94> rr:child "trip_id" ;
+    rr:parent "trip_id" .
+
+<http://mapping.example.com/uuid/01c62be8-336a-4f9f-a63b-43ab18445cce> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/7bbf9440-e0fb-4391-94f2-4f59c3159e35> ;
+    rr:predicateMap <http://mapping.example.com/uuid/5fa1163f-5bcf-485e-9ba9-0e0206c2eb70> .
+
+<http://mapping.example.com/uuid/02902a27-b768-471a-b0c0-6d11e2e9edab> a rr:PredicateMap ;
+    rr:constant foaf:page .
+
+<http://mapping.example.com/uuid/03706016-f475-4e7d-86e7-4515c754c759> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/040da899-af9c-4443-804a-b928a576ffdf> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Feed" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/0480c030-22d9-4c4c-b15e-d8f46558e41e> a rr:PredicateMap ;
+    rr:constant foaf:phone .
+
+<http://mapping.example.com/uuid/050a5987-19d8-438d-86bf-8938d4ec4712> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/0188904b-61c7-459c-9966-2e14db6d5b94> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_trips_0> .
+
+<http://mapping.example.com/uuid/05612e3d-0751-4906-866e-23dd89e205e5> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "FREQUENCIES.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/05d2318d-939c-43af-acf4-53e70f159956> a rr:ObjectMap ;
+    rml:reference "route_desc" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/08324c2d-9664-4640-adca-519ad4fe0179> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/ea8a7fda-1ba7-4243-9f95-becb18048250> ;
+    rr:predicateMap <http://mapping.example.com/uuid/c56c8cbd-9294-4259-8837-6da74747523e> .
+
+<http://mapping.example.com/uuid/0892d382-6e78-44b2-8d8d-995ef3cec6be> a rr:ObjectMap ;
+    rml:reference "stop_sequence" ;
+    rr:datatype xsd:integer ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/099251ef-4f3a-4585-a6dc-dbeb5111154f> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/57da2f9f-8d99-42ff-aedd-acaa3a70a0fd> ;
+    rr:predicateMap <http://mapping.example.com/uuid/0480c030-22d9-4c4c-b15e-d8f46558e41e> .
+
+<http://mapping.example.com/uuid/0b0f900b-0823-4765-b29b-4878be91724c> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#headsign> .
+
+<http://mapping.example.com/uuid/0bcf7b62-d9e7-4b7a-8efe-9545c8c6f038> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/0d06a458-3541-4486-853d-0088b4f74429> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/0d0e2f34-bc72-47ae-be37-69447241396d> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Service" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/0d7eda2b-60de-4c01-a632-1e83172849b2> a rr:ObjectMap ;
+    rml:reference "shape_pt_lon" ;
+    rr:datatype xsd:double ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/0e13d243-48da-4b9b-9812-5e2f1f9856c6> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/df42c903-f356-4935-b0f8-5b0c02773caa> ;
+    rr:predicateMap <http://mapping.example.com/uuid/93f16bec-34d4-4fd8-8d4e-41e05f51e11a> .
+
+<http://mapping.example.com/uuid/0ebc6442-5f70-4f21-8c7f-f62a61d6fb5f> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#serviceRule> .
+
+<http://mapping.example.com/uuid/105eaa13-d346-4b19-9797-811850d8514d> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "SHAPES.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/106a88df-e411-45ab-aff5-1a8fd3e417b4> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "CALENDAR.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/1096a9eb-4c8d-40d1-8634-4a30ae6c58c8> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/68d30849-dbbf-45c4-9061-2ceacb378aa0> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_calendar_date_rules_0> .
+
+<http://mapping.example.com/uuid/1158d328-dfda-4b29-a607-df387cf18698> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#headsign> .
+
+<http://mapping.example.com/uuid/118dc918-ba53-4651-a368-f9f0e5052e6c> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/c96d9568-73d8-417f-998c-f4b345490b11> ;
+    rr:predicateMap <http://mapping.example.com/uuid/bde2fd33-868c-44d9-8586-cf47ff6505b6> .
+
+<http://mapping.example.com/uuid/1361f349-c99a-4656-ba3e-5ec42162276b> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Stop" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/143e8f1a-919b-4088-96a1-c923ecfc9171> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#routeUrl> .
+
+<http://mapping.example.com/uuid/1521fd01-72bb-4856-98c1-952f76feda18> a rr:PredicateMap ;
+    rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> .
+
+<http://mapping.example.com/uuid/156e5ad7-2d5d-404a-a20e-86239862b16a> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/f8b14ba6-0e4d-4503-89cf-6c8d228a4138> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_stops_0> .
+
+<http://mapping.example.com/uuid/18782696-d875-4c4c-a1fe-f9231958341d> a rr:ObjectMap ;
+    rml:reference "feed_end_date" ;
+    rr:datatype xsd:date ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/18d5f735-ede9-4a6e-86bb-3df0150b2d65> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/b96eeb4e-5df3-47f9-a1e1-a5d142358668> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_trips_0> .
+
+<http://mapping.example.com/uuid/1a1a84b5-968a-49cf-a058-47ae10f83ea7> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/731dda49-f637-45a7-bde9-978fb9ac2955> ;
+    rr:predicateMap <http://mapping.example.com/uuid/6aa61c56-144f-4a98-aaf5-3d4ebf28323b> .
+
+<http://mapping.example.com/uuid/1b7987f0-d18d-4254-b607-dbf7713a4043> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#parentStation> .
+
+<http://mapping.example.com/uuid/1be4cb8d-972e-4ffd-a007-46cb6a1848dc> a rr:ObjectMap ;
+    rml:reference "sunday" ;
+    rr:datatype xsd:boolean ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/1c415708-ad2b-4f00-bed0-04aa6d9e4b9c> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/78c9f16e-f64f-4254-9598-75745e76aadf> ;
+    rr:predicateMap <http://mapping.example.com/uuid/1b7987f0-d18d-4254-b607-dbf7713a4043> .
+
+<http://mapping.example.com/uuid/1ccddb48-b349-4e2c-9491-e475f2232cdb> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/687d6f45-0240-47a8-932c-da1419c12937> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_calendar_rules_0> .
+
+<http://mapping.example.com/uuid/1dcd915e-ebae-4f18-b4cd-2d630661caac> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/a2bbe0de-db82-4cbc-9f3b-515223b6395a> ;
+    rr:predicateMap <http://mapping.example.com/uuid/f171ac94-e418-4195-a231-ff495b50e975> .
+
+<http://mapping.example.com/uuid/20d73ca3-f4dd-4099-a83e-ac852241fc1f> a rr:ObjectMap ;
+    rml:reference "shape_pt_lat" ;
+    rr:datatype xsd:double ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/214890ac-911e-4742-9f4e-135c65976c88> a rr:ObjectMap ;
+    rml:reference "feed_publisher_url" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/227e1e98-ee1a-40d8-ba0d-02eb716e8bd1> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#StopTime" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/235fe843-84ec-47d2-80c9-706616be7228> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/feed/{feed_publisher_name}" .
+
+<http://mapping.example.com/uuid/24d0df9a-7725-4af0-9369-7b37eda70625> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/25eaa3d6-5c05-4b18-a5de-015e1924c2e4> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#stopSequence> .
+
+<http://mapping.example.com/uuid/26031d81-c715-4234-8601-9234054e9f02> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Agency" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/28595d6e-be78-472f-91f9-2130819bb20e> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/5d2786ce-8f39-4b55-b4aa-1ec1f7bf1d64> ;
+    rr:predicateMap <http://mapping.example.com/uuid/80afe23e-536e-47c1-8f3c-7f44b4c4c63e> .
+
+<http://mapping.example.com/uuid/2a888a2d-0f4b-460c-b14a-89aa97896bd9> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/1096a9eb-4c8d-40d1-8634-4a30ae6c58c8> ;
+    rr:predicateMap <http://mapping.example.com/uuid/0ebc6442-5f70-4f21-8c7f-f62a61d6fb5f> .
+
+<http://mapping.example.com/uuid/2bd99493-16ad-4c2b-abe3-1aeaabc41588> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/f7bb6ed3-2c7a-421c-82b2-e9eea771514e> ;
+    rr:predicateMap <http://mapping.example.com/uuid/bd92efb2-b697-4514-a0ea-d03558b8f8b4> .
+
+<http://mapping.example.com/uuid/2be5899a-1c08-418e-855c-b64dedc02dda> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/2f67b2d7-fc5a-4f44-97d8-d3a82a246bcb> ;
+    rr:predicateMap <http://mapping.example.com/uuid/31a57c1d-c0a7-44ed-bd5c-dc8b007c4960> .
+
+<http://mapping.example.com/uuid/2e082408-0014-4c95-a8fb-aa4fe475d1a7> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#departureTime> .
+
+<http://mapping.example.com/uuid/2e238b4a-c828-4ba6-bb2e-1106df857ace> a rr:ObjectMap ;
+    rr:template "http://transport.linkeddata.es/resource/DropOffType/{drop_off_type}" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/2f67b2d7-fc5a-4f44-97d8-d3a82a246bcb> a rr:ObjectMap ;
+    rml:reference "saturday" ;
+    rr:datatype xsd:boolean ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/31a57c1d-c0a7-44ed-bd5c-dc8b007c4960> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#saturday> .
+
+<http://mapping.example.com/uuid/31fa1897-b4f4-4b92-bd90-cd6ff807932d> a rr:PredicateMap ;
+    rr:constant foaf:page .
+
+<http://mapping.example.com/uuid/327b7120-59f3-4b52-a554-83cbd2968183> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/7f43ef2d-2589-475e-a76e-42ba17561ad6> ;
+    rr:predicateMap <http://mapping.example.com/uuid/e60c37b5-e5dc-4412-8610-010091346ade> .
+
+<http://mapping.example.com/uuid/37e2527a-4d8f-450c-8ed7-bcdddac6b849> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#dateAddition> .
+
+<http://mapping.example.com/uuid/37f37246-455e-4d3a-a620-5fc7e0f26246> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#shapePoint> .
+
+<http://mapping.example.com/uuid/3b57f299-c522-48e9-b2d0-fc959ba588a4> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#code> .
+
+<http://mapping.example.com/uuid/3b78a27a-024e-4901-bf3e-b2c0c4b80dc1> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#agency> .
+
+<http://mapping.example.com/uuid/3cb2a9bc-6673-4e72-bb65-67c63dbac456> a rr:PredicateMap ;
+    rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> .
+
+<http://mapping.example.com/uuid/3dc101e5-225e-4263-aac8-ff2b9c91b789> rr:child "service_id" ;
+    rr:parent "service_id" .
+
+<http://mapping.example.com/uuid/3efdcaab-0459-4c50-8831-5655bed4e523> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/3f17dc8f-103c-49c2-b167-13f54c8db5d9> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}" .
+
+<http://mapping.example.com/uuid/4014d59a-489d-47e3-b81c-721fddff1f3c> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/05d2318d-939c-43af-acf4-53e70f159956> ;
+    rr:predicateMap <http://mapping.example.com/uuid/e99a6107-b37d-4f3e-8664-6e748332c735> .
+
+<http://mapping.example.com/uuid/407d74ff-f8a7-4885-9416-76a108c2d685> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#service> .
+
+<http://mapping.example.com/uuid/41eae96c-4278-4755-8bad-082bd7661360> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/4f9f653c-4a03-415e-83a6-30c688a08ec6> ;
+    rr:predicateMap <http://mapping.example.com/uuid/88864d6b-bca4-496a-acd8-0a0b8a3da4bd> .
+
+<http://mapping.example.com/uuid/426a9ee3-94b4-4fad-b143-18e4b10c1c98> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/957358ce-6f47-4382-a529-5ab67f3ca999> ;
+    rr:predicateMap <http://mapping.example.com/uuid/24d0df9a-7725-4af0-9369-7b37eda70625> .
+
+<http://mapping.example.com/uuid/434273c4-a392-4ec0-85e1-aaa95ff74032> a rr:ObjectMap ;
+    rml:reference "feed_lang" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/43c0dbd8-0814-45a8-bde4-bdb694fff05e> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/1ccddb48-b349-4e2c-9491-e475f2232cdb> ;
+    rr:predicateMap <http://mapping.example.com/uuid/8b727a73-56d0-4c96-8f32-69263cf8c4b0> .
+
+<http://mapping.example.com/uuid/43c2d7ef-01db-4961-b27f-86815c6c26b9> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#monday> .
+
+<http://mapping.example.com/uuid/43e125b7-99ef-4120-86e1-b6acd8f6a53b> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/79f368dc-dca7-4532-83d5-ac1c05a8f572> ;
+    rr:predicateMap <http://mapping.example.com/uuid/3efdcaab-0459-4c50-8831-5655bed4e523> .
+
+<http://mapping.example.com/uuid/45261f63-6181-4455-b376-8b2cdc3bdd7e> a rr:ObjectMap ;
+    rr:template "http://transport.linkeddata.es/resource/RouteType/{route_type}" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/4556f403-6614-4a63-879c-0fd0b46e8e05> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#stop> .
+
+<http://mapping.example.com/uuid/459f04d5-90d2-4fd2-898b-a4746c1baf3d> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/ec6dd49e-b641-4f8d-8de4-ecc5f07f57a0> ;
+    rr:predicateMap <http://mapping.example.com/uuid/9d85e7c8-ef5f-4573-9d20-72489dd88863> .
+
+<http://mapping.example.com/uuid/46246f25-5602-4f80-837d-2b2b44b9b49e> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/490d65a9-30ee-4be1-a0a3-f1beca00c7ff> a rr:ObjectMap ;
+    rml:reference "agency_timezone" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/498daec0-fd94-47de-824a-d155cfe49731> a rr:ObjectMap ;
+    rml:reference "exception_type" ;
+    rr:datatype xsd:integer ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/4b5a7718-d720-42cd-aeae-b27df2c3cd12> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/050a5987-19d8-438d-86bf-8938d4ec4712> ;
+    rr:predicateMap <http://mapping.example.com/uuid/864d9d28-67a3-4115-a964-b7379bd8e388> .
+
+<http://mapping.example.com/uuid/4b96dd8e-e226-4bb4-b1d4-4aad16d4bc01> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/4baf0a7d-0b93-4502-89e5-f6e4806346c9> a rr:ObjectMap ;
+    rml:reference "agency_fare_url" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/4cf4fdeb-edf0-4d47-9205-46c07509007a> a rr:PredicateObjectMap ;
+    rr:objectMap [ a rr:ObjectMap ;
+            rr:template "http://transport.linkeddata.es/madrid/metro/shape_point/{shape_id}-{shape_pt_sequence}" ;
+            rr:termType rr:IRI ] ;
+    rr:predicateMap <http://mapping.example.com/uuid/37f37246-455e-4d3a-a620-5fc7e0f26246> .
+
+<http://mapping.example.com/uuid/4d18e8b9-16b0-41dc-abad-ad23c34147f6> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "FEED_INFO.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/4e2dbf4f-47ad-4297-940f-557cf9cbbd13> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#shortName> .
+
+<http://mapping.example.com/uuid/4edffcfa-a21a-46f3-a3e9-33fcdd9ce92c> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#arrivalTime> .
+
+<http://mapping.example.com/uuid/4f9f653c-4a03-415e-83a6-30c688a08ec6> a rr:ObjectMap ;
+    rml:reference "agency_name" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/4faa3fe0-9c08-48a0-9044-00826cf54a00> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "TRIPS.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/50326d1a-281f-45e6-876b-e9ae3c291ec3> a rr:ObjectMap ;
+    rml:reference "feed_start_date" ;
+    rr:datatype xsd:date ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/51818f6c-4231-4034-b73e-39f3e94fc066> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#exactTimes> .
+
+<http://mapping.example.com/uuid/51858318-8d38-4e9f-a1de-a4c6ba1b65c3> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#sunday> .
+
+<http://mapping.example.com/uuid/54d547b7-64a0-40ee-b143-5c573db91e5c> a rr:ObjectMap ;
+    rml:reference "route_short_name" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/561a39c8-9954-444d-ac7a-ebbcc983b097> a rr:ObjectMap ;
+    rml:reference "stop_id" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/56421ac2-0314-40ba-ba84-813dd7bdc22b> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/0d0e2f34-bc72-47ae-be37-69447241396d> ;
+    rr:predicateMap <http://mapping.example.com/uuid/88edc656-7b78-4111-ae90-43fc0f0ccd46> .
+
+<http://mapping.example.com/uuid/5648fb4b-bb01-4f30-b4c4-640434d40000> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/54d547b7-64a0-40ee-b143-5c573db91e5c> ;
+    rr:predicateMap <http://mapping.example.com/uuid/4e2dbf4f-47ad-4297-940f-557cf9cbbd13> .
+
+<http://mapping.example.com/uuid/56d4c5e2-4ae4-4b71-837b-1453c566b6c6> a rr:ObjectMap ;
+    rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_boarding}" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/576a064f-8f25-4fad-924d-109a2aefb09c> a rr:PredicateMap ;
+    rr:constant foaf:page .
+
+<http://mapping.example.com/uuid/576e5e8c-c38e-4145-a462-25bdbf32b64a> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/8a516ad2-ddb6-4ff3-b8f5-048ac6ffbc97> ;
+    rr:predicateMap <http://mapping.example.com/uuid/b71eb092-88d2-4a38-8d04-4f84c16f0573> .
+
+<http://mapping.example.com/uuid/57da2f9f-8d99-42ff-aedd-acaa3a70a0fd> a rr:ObjectMap ;
+    rml:reference "agency_phone" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/585895c8-8e58-4ecb-978f-33f2e7f6b38c> a rr:ObjectMap ;
+    rml:reference "route_color" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/587dd7f3-dc5d-4ce2-b5b7-47f7261d1738> a rr:PredicateMap ;
+    rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#lat> .
+
+<http://mapping.example.com/uuid/59c4c32c-abea-4c76-ba40-6ab953ff86f3> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/6df1a406-44fe-4261-b79a-e1bcfb221871> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_agency_0> .
+
+<http://mapping.example.com/uuid/5a468d2b-c35b-4249-ab4f-48e1d96ab176> a rr:ObjectMap ;
+    rml:reference "stop_url" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/5aef0f68-f209-43f5-b511-4d78665670ee> a rr:ObjectMap ;
+    rml:reference "date" ;
+    rr:datatype xsd:date ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/5b3d691e-3858-4e44-ae33-f9efe958d357> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/7e767b44-6ff6-45da-b186-3b68e1bd16d0> ;
+    rr:predicateMap <http://mapping.example.com/uuid/bcbff7f7-44b3-473b-b35d-96bb83e0e964> .
+
+<http://mapping.example.com/uuid/5c169e55-bba3-46ff-9153-283c857ff345> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/5d2786ce-8f39-4b55-b4aa-1ec1f7bf1d64> a rr:ObjectMap ;
+    rml:reference "shape_pt_sequence" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/5fa1163f-5bcf-485e-9ba9-0e0206c2eb70> a rr:PredicateMap ;
+    rr:constant dcterms:language .
+
+<http://mapping.example.com/uuid/6033cfcc-bdc0-42a6-8b52-d680cd325b58> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/a648db05-a5ef-4adc-946d-a1a6f9f2efc0> ;
+    rr:predicateMap <http://mapping.example.com/uuid/839f4fc4-cafe-4bcd-83f2-c03000a37548> .
+
+<http://mapping.example.com/uuid/640b652d-36ed-45c0-b4eb-8319e36a5486> rr:child "service_id" ;
+    rr:parent "service_id" .
+
+<http://mapping.example.com/uuid/64f81ac7-96aa-435e-9608-d55677b7cb98> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/94c0aad9-38f9-4c4d-90d9-9d172b9810e0> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_routes_0> .
+
+<http://mapping.example.com/uuid/64f91403-8e08-4634-8609-7ce500fb374e> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/18782696-d875-4c4c-a1fe-f9231958341d> ;
+    rr:predicateMap <http://mapping.example.com/uuid/d1978a3f-b351-41ff-8f22-eb7d226f985b> .
+
+<http://mapping.example.com/uuid/6659ee9e-b1e5-4b9b-a4ab-236de552b1c0> a rr:ObjectMap ;
+    rml:reference "trip_headsign" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/6674cfb9-cc7c-4364-a06e-b4916496a6d8> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/59c4c32c-abea-4c76-ba40-6ab953ff86f3> ;
+    rr:predicateMap <http://mapping.example.com/uuid/3b78a27a-024e-4901-bf3e-b2c0c4b80dc1> .
+
+<http://mapping.example.com/uuid/6817bca9-14ef-4db7-b1ff-7d7d9742aba5> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/f8aefe6c-5333-4945-ba4b-d01d65e0c3a9> ;
+    rr:predicateMap <http://mapping.example.com/uuid/c64cec97-86ca-473b-801b-ba6261134870> .
+
+<http://mapping.example.com/uuid/687d6f45-0240-47a8-932c-da1419c12937> rr:child "service_id" ;
+    rr:parent "service_id" .
+
+<http://mapping.example.com/uuid/68d30849-dbbf-45c4-9061-2ceacb378aa0> rr:child "service_id" ;
+    rr:parent "service_id" .
+
+<http://mapping.example.com/uuid/69b30b4f-e9fa-4fd7-81dc-5c160510a3c4> a rr:ObjectMap ;
+    rml:reference "stop_timezone" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/6aa61c56-144f-4a98-aaf5-3d4ebf28323b> a rr:PredicateMap ;
+    rr:constant dcterms:description .
+
+<http://mapping.example.com/uuid/6c77b50d-921d-4c18-9b52-0fb831a9e51c> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "CALENDAR_DATES.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/6ccd49db-ed37-4bb2-ab14-40e1ec78d12e> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#headwaySeconds> .
+
+<http://mapping.example.com/uuid/6df1a406-44fe-4261-b79a-e1bcfb221871> rr:child "agency_id" ;
+    rr:parent "agency_id" .
+
+<http://mapping.example.com/uuid/6e44fe0a-e971-4b82-b8bf-55c7d4e24a2b> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/6e7ca0e2-7899-4c97-a187-0d2247ca0dce> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#thursday> .
+
+<http://mapping.example.com/uuid/6f5aab73-982c-4b6b-8d5f-7c029869594b> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/0892d382-6e78-44b2-8d8d-995ef3cec6be> ;
+    rr:predicateMap <http://mapping.example.com/uuid/25eaa3d6-5c05-4b18-a5de-015e1924c2e4> .
+
+<http://mapping.example.com/uuid/6f7b7c51-0f08-418f-92c2-0b62ed1d7754> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/434273c4-a392-4ec0-85e1-aaa95ff74032> ;
+    rr:predicateMap <http://mapping.example.com/uuid/e46dbdec-cd31-469e-b628-02d69e9d2225> .
+
+<http://mapping.example.com/uuid/6fbd3df7-2274-4621-bb13-63de04d4a0d8> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/2e238b4a-c828-4ba6-bb2e-1106df857ace> ;
+    rr:predicateMap <http://mapping.example.com/uuid/acc9eade-731c-4eac-adef-c01f0f2a9ef4> .
+
+<http://mapping.example.com/uuid/70169d84-6f4d-4235-aa1f-8676dbe63b27> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/d890707c-fdfc-49a5-8543-f4eaca3b62c5> ;
+    rr:predicateMap <http://mapping.example.com/uuid/0b0f900b-0823-4765-b29b-4878be91724c> .
+
+<http://mapping.example.com/uuid/70bf2ec6-62cf-46e2-8b5b-d53c03051512> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/0d7eda2b-60de-4c01-a632-1e83172849b2> ;
+    rr:predicateMap <http://mapping.example.com/uuid/3cb2a9bc-6673-4e72-bb65-67c63dbac456> .
+
+<http://mapping.example.com/uuid/70fbe90c-3a8d-462a-9905-5fec03b84278> a rr:PredicateMap ;
+    rr:constant <http://schema.org/endDate> .
+
+<http://mapping.example.com/uuid/7196a2b9-ab42-4c55-b02e-5a07ee2dece9> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/f6becdb2-8846-4af6-a3cb-bda48b8efd18> ;
+    rr:predicateMap <http://mapping.example.com/uuid/2e082408-0014-4c95-a8fb-aa4fe475d1a7> .
+
+<http://mapping.example.com/uuid/723176f0-43c7-4e5e-a8be-99f5784f13cf> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/agency/{agency_id}" .
+
+<http://mapping.example.com/uuid/731dda49-f637-45a7-bde9-978fb9ac2955> a rr:ObjectMap ;
+    rml:reference "stop_desc" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/742c7c95-9c68-4e40-ba1b-74e60c464432> a rr:ObjectMap ;
+    rml:reference "zone_id" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/74aae730-f3eb-43b1-a8d7-ea460855ad56> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/stops/{stop_id}" .
+
+<http://mapping.example.com/uuid/763a8628-6c4b-4074-9b14-0f5d4a86e80b> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#locationType> .
+
+<http://mapping.example.com/uuid/76a1e66c-c1ce-4368-bb0b-58f42dde4f75> a rr:ObjectMap ;
+    rml:reference "start_time" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/7770b97b-c3f9-445c-be38-081ec9bc8e57> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/shape_point/{shape_id}-{shape_pt_sequence}" .
+
+<http://mapping.example.com/uuid/78c9f16e-f64f-4254-9598-75745e76aadf> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/e3aee67e-d7e0-4ae4-892c-1b05808ac17e> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_stops_0> .
+
+<http://mapping.example.com/uuid/79f368dc-dca7-4532-83d5-ac1c05a8f572> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Route" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/7b40a447-c287-45b8-83ff-b6a842d7b7d5> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/4baf0a7d-0b93-4502-89e5-f6e4806346c9> ;
+    rr:predicateMap <http://mapping.example.com/uuid/94b15066-91c9-4ab7-9290-29e974a8e256> .
+
+<http://mapping.example.com/uuid/7bbf9440-e0fb-4391-94f2-4f59c3159e35> a rr:ObjectMap ;
+    rml:reference "agency_lang" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/7cecea3b-cc3f-4aae-aa29-18cc3375fb73> a rr:PredicateMap ;
+    rr:constant dcterms:identifier .
+
+<http://mapping.example.com/uuid/7ddc2ee3-fe56-4b65-9eaa-5aad0c7b3735> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#CalendarRule" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/7e767b44-6ff6-45da-b186-3b68e1bd16d0> a rr:ObjectMap ;
+    rr:template "http://transport.linkeddata.es/resource/WheelchairBoardingStatus/{wheelchair_accessible}" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/7f43ef2d-2589-475e-a76e-42ba17561ad6> a rr:ObjectMap ;
+    rml:reference "route_text_color" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/7f596952-60cc-4971-b85c-3f2b7ce35283> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/20d73ca3-f4dd-4099-a83e-ac852241fc1f> ;
+    rr:predicateMap <http://mapping.example.com/uuid/1521fd01-72bb-4856-98c1-952f76feda18> .
+
+<http://mapping.example.com/uuid/7fe33243-9705-48cf-b584-7059defaebbd> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/26031d81-c715-4234-8601-9234054e9f02> ;
+    rr:predicateMap <http://mapping.example.com/uuid/03706016-f475-4e7d-86e7-4515c754c759> .
+
+<http://mapping.example.com/uuid/80afe23e-536e-47c1-8f3c-7f44b4c4c63e> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#pointSequence> .
+
+<http://mapping.example.com/uuid/819022ba-4cf1-4af3-a03d-742aa45a41e1> rr:child "shape_id" ;
+    rr:parent "shape_id" .
+
+<http://mapping.example.com/uuid/81e2c699-55cc-45a2-bd64-bfd41695b840> a rr:ObjectMap ;
+    rml:reference "stop_code" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/82985d2d-79d7-427a-a725-defa6602a9a7> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/498daec0-fd94-47de-824a-d155cfe49731> ;
+    rr:predicateMap <http://mapping.example.com/uuid/37e2527a-4d8f-450c-8ed7-bcdddac6b849> .
+
+<http://mapping.example.com/uuid/830f153f-aede-4352-9da8-2573c1729282> a rr:PredicateMap ;
+    rr:constant <http://schema.org/startDate> .
+
+<http://mapping.example.com/uuid/839f4fc4-cafe-4bcd-83f2-c03000a37548> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#shortName> .
+
+<http://mapping.example.com/uuid/83a242fe-3b44-4d51-9761-fb1c5831c3df> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/d6a11cbc-ba3b-4e7c-9e2c-71b1a6701fc3> ;
+    rr:predicateMap <http://mapping.example.com/uuid/ffa1552d-ef04-4ab2-a7b7-09b9fc02a6a7> .
+
+<http://mapping.example.com/uuid/85354eba-e049-4647-bc79-d030c67eafca> a rr:ObjectMap ;
+    rml:reference "stop_lat" ;
+    rr:datatype xsd:double ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/864d9d28-67a3-4115-a964-b7379bd8e388> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#trip> .
+
+<http://mapping.example.com/uuid/88864d6b-bca4-496a-acd8-0a0b8a3da4bd> a rr:PredicateMap ;
+    rr:constant foaf:name .
+
+<http://mapping.example.com/uuid/88d3454f-0fa3-451f-b070-2e080f06f508> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/5a468d2b-c35b-4249-ab4f-48e1d96ab176> ;
+    rr:predicateMap <http://mapping.example.com/uuid/02902a27-b768-471a-b0c0-6d11e2e9edab> .
+
+<http://mapping.example.com/uuid/88edc656-7b78-4111-ae90-43fc0f0ccd46> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/89793024-70cf-48ed-9527-7952eb1bd3f9> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#startTime> .
+
+<http://mapping.example.com/uuid/8a516ad2-ddb6-4ff3-b8f5-048ac6ffbc97> a rr:ObjectMap ;
+    rml:reference "shape_dist_traveled" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/8b727a73-56d0-4c96-8f32-69263cf8c4b0> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#serviceRule> .
+
+<http://mapping.example.com/uuid/8bf16386-090d-4193-9cf7-5da0ed57f2e3> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/81e2c699-55cc-45a2-bd64-bfd41695b840> ;
+    rr:predicateMap <http://mapping.example.com/uuid/3b57f299-c522-48e9-b2d0-fc959ba588a4> .
+
+<http://mapping.example.com/uuid/8d1997c8-fc6a-4b61-b378-9d3380a13de0> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/calendar_rules/{service_id}" .
+
+<http://mapping.example.com/uuid/90ff4669-eddd-4c5f-868b-d2bf8e61dc02> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#pickupType> .
+
+<http://mapping.example.com/uuid/9167cdf4-1732-4ac1-b6a3-130d9b4cdb54> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/50326d1a-281f-45e6-876b-e9ae3c291ec3> ;
+    rr:predicateMap <http://mapping.example.com/uuid/830f153f-aede-4352-9da8-2573c1729282> .
+
+<http://mapping.example.com/uuid/91c55da8-d417-412e-87c5-e511a297d223> a rr:ObjectMap ;
+    rml:reference "stop_name" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/93f16bec-34d4-4fd8-8d4e-41e05f51e11a> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#shape> .
+
+<http://mapping.example.com/uuid/9421e680-e50f-418e-9597-3cefccf0beb9> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> .
+
+<http://mapping.example.com/uuid/9439e2d3-fdf1-4b8e-b417-addf933395e4> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/d310e23c-5b60-4995-aa6c-360e3bb35f02> ;
+    rr:predicateMap <http://mapping.example.com/uuid/f452280b-bab7-4ddc-8cca-38e7cf84ac0b> .
+
+<http://mapping.example.com/uuid/94b15066-91c9-4ab7-9290-29e974a8e256> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#fareUrl> .
+
+<http://mapping.example.com/uuid/94c0aad9-38f9-4c4d-90d9-9d172b9810e0> rr:child "route_id" ;
+    rr:parent "route_id" .
+
+<http://mapping.example.com/uuid/957358ce-6f47-4382-a529-5ab67f3ca999> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Shape" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/95f657d1-2376-4c4b-8d2c-54bf7a62f879> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/96bc184a-a26e-451e-ad3d-ca5aa008239c> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/56d4c5e2-4ae4-4b71-837b-1453c566b6c6> ;
+    rr:predicateMap <http://mapping.example.com/uuid/9421e680-e50f-418e-9597-3cefccf0beb9> .
+
+<http://mapping.example.com/uuid/97ba5531-d018-4488-8bab-feec5791d14f> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/18d5f735-ede9-4a6e-86bb-3df0150b2d65> ;
+    rr:predicateMap <http://mapping.example.com/uuid/fc7d40e7-dfc8-497e-aab5-2ae53b7a5c7b> .
+
+<http://mapping.example.com/uuid/9bbc437f-0677-4424-b71c-c55a5231c6f6> a rr:ObjectMap ;
+    rml:reference "thursday" ;
+    rr:datatype xsd:boolean ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/9c8ad5ec-9c4a-43f6-96ab-0d2ff75474df> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/9d85e7c8-ef5f-4573-9d20-72489dd88863> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#longName> .
+
+<http://mapping.example.com/uuid/a10f634e-d66d-4a73-9adf-a243d8c8a4ea> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/7ddc2ee3-fe56-4b65-9eaa-5aad0c7b3735> ;
+    rr:predicateMap <http://mapping.example.com/uuid/6e44fe0a-e971-4b82-b8bf-55c7d4e24a2b> .
+
+<http://mapping.example.com/uuid/a2bbe0de-db82-4cbc-9f3b-515223b6395a> a rr:ObjectMap ;
+    rml:reference "stop_lon" ;
+    rr:datatype xsd:double ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/a5ea65b5-1abc-4358-80c5-cd4f4cb74a70> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/3dc101e5-225e-4263-aac8-ff2b9c91b789> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_services1_0> .
+
+<http://mapping.example.com/uuid/a5f24e66-4860-411b-ad53-cea6b687e756> a rr:PredicateMap ;
+    rr:constant foaf:name .
+
+<http://mapping.example.com/uuid/a648db05-a5ef-4adc-946d-a1a6f9f2efc0> a rr:ObjectMap ;
+    rml:reference "trip_short_name" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/a65bf6c8-9445-48d6-b414-ea013fb3042b> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time}" .
+
+<http://mapping.example.com/uuid/a81b9e71-3220-4937-9f14-9bb32a8c05b8> a rr:PredicateMap ;
+    rr:constant dcterms:publisher .
+
+<http://mapping.example.com/uuid/ab850855-30ef-4a6b-95bb-6dae4cbac2f3> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "SHAPES.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/ab9984e2-d0dd-43d6-bb3c-515d354b54f0> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/f54b43c3-ba6d-41ee-b4ef-8a3872017d30> ;
+    rr:predicateMap <http://mapping.example.com/uuid/4edffcfa-a21a-46f3-a3e9-33fcdd9ce92c> .
+
+<http://mapping.example.com/uuid/aca62c42-7a09-4d69-868b-fb1bcc53c94b> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/ebab2e04-e12c-46a6-af43-71f558041aad> ;
+    rr:predicateMap <http://mapping.example.com/uuid/90ff4669-eddd-4c5f-868b-d2bf8e61dc02> .
+
+<http://mapping.example.com/uuid/acc9eade-731c-4eac-adef-c01f0f2a9ef4> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#dropOffType> .
+
+<http://mapping.example.com/uuid/aeca91bc-46df-4764-a74e-a14a142e989d> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/76a1e66c-c1ce-4368-bb0b-58f42dde4f75> ;
+    rr:predicateMap <http://mapping.example.com/uuid/89793024-70cf-48ed-9527-7952eb1bd3f9> .
+
+<http://mapping.example.com/uuid/b077c9c9-2d44-4c31-911a-f3232ba6d725> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#routeType> .
+
+<http://mapping.example.com/uuid/b1eaf4bf-6320-4c0f-a554-1ff7784c6a82> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/d9e7f8ec-997a-4c34-a348-2d60ab016bbb> ;
+    rr:predicateMap <http://mapping.example.com/uuid/43c2d7ef-01db-4961-b27f-86815c6c26b9> .
+
+<http://mapping.example.com/uuid/b30648ef-e2ea-4e4f-b4ee-cf92890f81cc> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "AGENCY.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/b68d8323-08e1-4f74-84a8-8930a6b38977> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/deff85e5-b7dc-4c39-854e-29c074e056c0> ;
+    rr:predicateMap <http://mapping.example.com/uuid/70fbe90c-3a8d-462a-9905-5fec03b84278> .
+
+<http://mapping.example.com/uuid/b71eb092-88d2-4a38-8d04-4f84c16f0573> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> .
+
+<http://mapping.example.com/uuid/b87c8fe2-bb3c-4a2a-9744-37b6d736cd73> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/227e1e98-ee1a-40d8-ba0d-02eb716e8bd1> ;
+    rr:predicateMap <http://mapping.example.com/uuid/4b96dd8e-e226-4bb4-b1d4-4aad16d4bc01> .
+
+<http://mapping.example.com/uuid/b96eeb4e-5df3-47f9-a1e1-a5d142358668> rr:child "trip_id" ;
+    rr:parent "trip_id" .
+
+<http://mapping.example.com/uuid/b97e2e94-d7b7-46c3-be11-8c543cb2328d> a rr:ObjectMap ;
+    rml:reference "exact_times" ;
+    rr:datatype xsd:boolean ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/ba184993-117f-4bd5-93e5-d4c9d6018579> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/91c55da8-d417-412e-87c5-e511a297d223> ;
+    rr:predicateMap <http://mapping.example.com/uuid/a5f24e66-4860-411b-ad53-cea6b687e756> .
+
+<http://mapping.example.com/uuid/ba570608-89a3-4e2e-97f5-b4994c46a8b4> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/d1fb9597-245e-49a4-a835-0d6efae35108> ;
+    rr:predicateMap <http://mapping.example.com/uuid/143e8f1a-919b-4088-96a1-c923ecfc9171> .
+
+<http://mapping.example.com/uuid/bba47195-ae4f-49ad-8823-9b57218692c0> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/561a39c8-9954-444d-ac7a-ebbcc983b097> ;
+    rr:predicateMap <http://mapping.example.com/uuid/7cecea3b-cc3f-4aae-aa29-18cc3375fb73> .
+
+<http://mapping.example.com/uuid/bbc47310-ced4-4605-8821-d40eb3a40b82> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/640b652d-36ed-45c0-b4eb-8319e36a5486> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_services2_0> .
+
+<http://mapping.example.com/uuid/bbcc3018-6d1e-427b-b9e1-5fbe00e1f0f3> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/9bbc437f-0677-4424-b71c-c55a5231c6f6> ;
+    rr:predicateMap <http://mapping.example.com/uuid/6e7ca0e2-7899-4c97-a187-0d2247ca0dce> .
+
+<http://mapping.example.com/uuid/bbeee353-2667-48e7-86b5-2831ec43c1bf> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/156e5ad7-2d5d-404a-a20e-86239862b16a> ;
+    rr:predicateMap <http://mapping.example.com/uuid/4556f403-6614-4a63-879c-0fd0b46e8e05> .
+
+<http://mapping.example.com/uuid/bc6d26a3-fd80-4e6e-999e-978281c739f1> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/b97e2e94-d7b7-46c3-be11-8c543cb2328d> ;
+    rr:predicateMap <http://mapping.example.com/uuid/51818f6c-4231-4034-b73e-39f3e94fc066> .
+
+<http://mapping.example.com/uuid/bcbff7f7-44b3-473b-b35d-96bb83e0e964> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#wheelchairAccessible> .
+
+<http://mapping.example.com/uuid/bd5fe84f-ab08-4be1-af4b-402961638435> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/742c7c95-9c68-4e40-ba1b-74e60c464432> ;
+    rr:predicateMap <http://mapping.example.com/uuid/c80323b8-725f-4e0e-a966-e16e76d3ad34> .
+
+<http://mapping.example.com/uuid/bd92efb2-b697-4514-a0ea-d03558b8f8b4> a rr:PredicateMap ;
+    rr:constant <http://schema.org/startDate> .
+
+<http://mapping.example.com/uuid/bda98571-9124-46eb-8a87-b67696c823c7> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/calendar_date_rule/{service_id}-{date}" .
+
+<http://mapping.example.com/uuid/bde2fd33-868c-44d9-8586-cf47ff6505b6> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#direction> .
+
+<http://mapping.example.com/uuid/c2961788-7e2e-46bc-ad2c-0cf268068f84> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#ShapePoint" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/c3a2ec9f-f9c0-40fa-8135-75f6e6a9d3a4> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/a5ea65b5-1abc-4358-80c5-cd4f4cb74a70>,
+        <http://mapping.example.com/uuid/bbc47310-ced4-4605-8821-d40eb3a40b82> ;
+    rr:predicateMap <http://mapping.example.com/uuid/407d74ff-f8a7-4885-9416-76a108c2d685> .
+
+<http://mapping.example.com/uuid/c554dad1-d51c-4a2a-9151-dfe460f3360d> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "STOP_TIMES.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/c56c8cbd-9294-4259-8837-6da74747523e> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#wednesday> .
+
+<http://mapping.example.com/uuid/c5b745fa-ff42-4453-a9fb-b18bd8271753> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/1be4cb8d-972e-4ffd-a007-46cb6a1848dc> ;
+    rr:predicateMap <http://mapping.example.com/uuid/51858318-8d38-4e9f-a1de-a4c6ba1b65c3> .
+
+<http://mapping.example.com/uuid/c64cec97-86ca-473b-801b-ba6261134870> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#block> .
+
+<http://mapping.example.com/uuid/c78fb5a8-9218-42b6-bf5d-c33e44675aa8> a rr:ObjectMap ;
+    rml:reference "friday" ;
+    rr:datatype xsd:boolean ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/c80323b8-725f-4e0e-a966-e16e76d3ad34> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#zone> .
+
+<http://mapping.example.com/uuid/c874db78-e0f4-4fca-be28-627f781d51c6> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#friday> .
+
+<http://mapping.example.com/uuid/c96d9568-73d8-417f-998c-f4b345490b11> a rr:ObjectMap ;
+    rml:reference "direction_id" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/c995d38f-74bf-45db-8724-d46ff57b5737> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/d1ee31c1-2856-4e6b-ae52-8bb0569c69e0> ;
+    rr:predicateMap <http://mapping.example.com/uuid/dcf15ff9-09bd-4f0c-916e-be40a2104bc7> .
+
+<http://mapping.example.com/uuid/c9f44b76-1282-4f98-b07f-adb5da1ef7f7> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#distanceTraveled> .
+
+<http://mapping.example.com/uuid/ca2be2c1-0db7-4728-ab24-1c19ff9a1cbd> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/c78fb5a8-9218-42b6-bf5d-c33e44675aa8> ;
+    rr:predicateMap <http://mapping.example.com/uuid/c874db78-e0f4-4fca-be28-627f781d51c6> .
+
+<http://mapping.example.com/uuid/ca9f71fa-4ca7-43e5-bf4a-5e2f97a0409f> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Frequency" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/cbede9f7-298d-475d-bcef-7c7a673f5e84> a rr:ObjectMap ;
+    rml:reference "feed_publisher_name" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/cc2f44e9-d55a-4818-9dbc-61c4e537394d> a rr:ObjectMap ;
+    rml:reference "agency_url" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/cc37c4d1-bfb6-4443-8a60-1ab08382467e> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "STOPS.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/cc7c3a25-5113-4d61-b021-5db6d61b9c1f> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/45261f63-6181-4455-b376-8b2cdc3bdd7e> ;
+    rr:predicateMap <http://mapping.example.com/uuid/b077c9c9-2d44-4c31-911a-f3232ba6d725> .
+
+<http://mapping.example.com/uuid/ce614aba-f89b-4094-840e-075bdda8ebf9> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#CalendarDateRule" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/ce767639-e31d-4793-99f9-555fc22db350> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/ca9f71fa-4ca7-43e5-bf4a-5e2f97a0409f> ;
+    rr:predicateMap <http://mapping.example.com/uuid/9c8ad5ec-9c4a-43f6-96ab-0d2ff75474df> .
+
+<http://mapping.example.com/uuid/cef88637-0d33-4bfe-a82b-41c64e5ea887> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/e5b88520-e406-4ad1-8985-c51d1c045c78> ;
+    rr:predicateMap <http://mapping.example.com/uuid/46246f25-5602-4f80-837d-2b2b44b9b49e> .
+
+<http://mapping.example.com/uuid/cef889e9-c30f-445b-917e-02a0cdc9399c> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/64f81ac7-96aa-435e-9608-d55677b7cb98> ;
+    rr:predicateMap <http://mapping.example.com/uuid/fcb49b74-0b1d-42a0-96d3-9effe9fa8571> .
+
+<http://mapping.example.com/uuid/d16bcaf9-9c0b-4436-9958-4b40ec697dc8> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/585895c8-8e58-4ecb-978f-33f2e7f6b38c> ;
+    rr:predicateMap <http://mapping.example.com/uuid/e4886024-df03-4b93-9fc0-5a872c93270a> .
+
+<http://mapping.example.com/uuid/d1978a3f-b351-41ff-8f22-eb7d226f985b> a rr:PredicateMap ;
+    rr:constant <http://schema.org/endDate> .
+
+<http://mapping.example.com/uuid/d1bfeeb2-90dc-4c4f-851f-24ea07cb6467> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "ROUTES.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/d1ee31c1-2856-4e6b-ae52-8bb0569c69e0> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Trip" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/d1fb9597-245e-49a4-a835-0d6efae35108> a rr:ObjectMap ;
+    rml:reference "route_url" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/d310e23c-5b60-4995-aa6c-360e3bb35f02> a rr:ObjectMap ;
+    rml:reference "feed_version" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/d5020de3-6de8-4bab-8d97-eb11d80d07bd> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/cbede9f7-298d-475d-bcef-7c7a673f5e84> ;
+    rr:predicateMap <http://mapping.example.com/uuid/a81b9e71-3220-4937-9f14-9bb32a8c05b8> .
+
+<http://mapping.example.com/uuid/d6a11cbc-ba3b-4e7c-9e2c-71b1a6701fc3> a rr:ObjectMap ;
+    rml:reference "tuesday" ;
+    rr:datatype xsd:boolean ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/d7c3f325-b860-49fe-8daa-a0797804a778> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/6659ee9e-b1e5-4b9b-a4ab-236de552b1c0> ;
+    rr:predicateMap <http://mapping.example.com/uuid/1158d328-dfda-4b29-a607-df387cf18698> .
+
+<http://mapping.example.com/uuid/d82d7ccc-4db8-48c7-8ae7-6dcc918e34dc> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/trips/{trip_id}" .
+
+<http://mapping.example.com/uuid/d849e47c-0d5f-4b44-b8ae-247bdb0885de> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/040da899-af9c-4443-804a-b928a576ffdf> ;
+    rr:predicateMap <http://mapping.example.com/uuid/5c169e55-bba3-46ff-9153-283c857ff345> .
+
+<http://mapping.example.com/uuid/d890707c-fdfc-49a5-8543-f4eaca3b62c5> a rr:ObjectMap ;
+    rml:reference "stop_headsign" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/d9e7f8ec-997a-4c34-a348-2d60ab016bbb> a rr:ObjectMap ;
+    rml:reference "monday" ;
+    rr:datatype xsd:boolean ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/dc3c0e45-96c6-4cf6-8563-7f70f63ca673> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/shape/{shape_id}" .
+
+<http://mapping.example.com/uuid/dcc6c6b3-74bd-457f-a759-854910eb60d9> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/services/{service_id}" .
+
+<http://mapping.example.com/uuid/dcf15ff9-09bd-4f0c-916e-be40a2104bc7> a rr:PredicateMap ;
+    rr:constant rdf:type .
+
+<http://mapping.example.com/uuid/deff85e5-b7dc-4c39-854e-29c074e056c0> a rr:ObjectMap ;
+    rml:reference "end_date" ;
+    rr:datatype xsd:date ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/df42c903-f356-4935-b0f8-5b0c02773caa> a rr:ObjectMap ;
+    rr:joinCondition <http://mapping.example.com/uuid/819022ba-4cf1-4af3-a03d-742aa45a41e1> ;
+    rr:parentTriplesMap <http://mapping.example.com/map_shapes_0> .
+
+<http://mapping.example.com/uuid/e0896e19-00ba-4fd4-8a85-302cb2747eaa> a rr:ObjectMap ;
+    rr:template "http://transport.linkeddata.es/resource/LocationType/{location_type}" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/e2529c48-d0f1-41c6-8a03-137a58518032> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#timeZone> .
+
+<http://mapping.example.com/uuid/e2d796b5-7289-4167-864d-8b85c6ad2293> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/e3abd139-0088-46f9-83d7-c2f0cbba9f5b> ;
+    rr:predicateMap <http://mapping.example.com/uuid/c9f44b76-1282-4f98-b07f-adb5da1ef7f7> .
+
+<http://mapping.example.com/uuid/e3abd139-0088-46f9-83d7-c2f0cbba9f5b> a rr:ObjectMap ;
+    rml:reference "shape_dist_traveled" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/e3aee67e-d7e0-4ae4-892c-1b05808ac17e> rr:child "parent_station" ;
+    rr:parent "stop_id" .
+
+<http://mapping.example.com/uuid/e46352ce-b794-4e94-a2ad-fa5d5e2582fd> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "CALENDAR.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/e46dbdec-cd31-469e-b628-02d69e9d2225> a rr:PredicateMap ;
+    rr:constant dcterms:language .
+
+<http://mapping.example.com/uuid/e46f0087-4c9c-4957-a772-f765ff3f2630> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/fd052a6d-eea5-40f1-9981-71941798cd3c> ;
+    rr:predicateMap <http://mapping.example.com/uuid/6ccd49db-ed37-4bb2-ab14-40e1ec78d12e> .
+
+<http://mapping.example.com/uuid/e4886024-df03-4b93-9fc0-5a872c93270a> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#color> .
+
+<http://mapping.example.com/uuid/e5b88520-e406-4ad1-8985-c51d1c045c78> a rr:ObjectMap ;
+    rr:constant "http://vocab.gtfs.org/terms#Service" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/e5d081b2-e038-4b79-a096-7bb9201a3b88> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/frequency/{trip_id}-{start_time}" .
+
+<http://mapping.example.com/uuid/e60c37b5-e5dc-4412-8610-010091346ade> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#textColor> .
+
+<http://mapping.example.com/uuid/e763376b-4870-4a94-ba44-81184a50008f> a rr:ObjectMap ;
+    rml:reference "end_time" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/e99a6107-b37d-4f3e-8664-6e748332c735> a rr:PredicateMap ;
+    rr:constant dcterms:description .
+
+<http://mapping.example.com/uuid/ea8a7fda-1ba7-4243-9f95-becb18048250> a rr:ObjectMap ;
+    rml:reference "wednesday" ;
+    rr:datatype xsd:boolean ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/ebab2e04-e12c-46a6-af43-71f558041aad> a rr:ObjectMap ;
+    rr:template "http://transport.linkeddata.es/resource/PickupType/{pickup_type}" ;
+    rr:termType rr:IRI .
+
+<http://mapping.example.com/uuid/ebda26be-b5e8-475c-84ce-5cc68e75a8c9> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#endTime> .
+
+<http://mapping.example.com/uuid/ec6dd49e-b641-4f8d-8de4-ecc5f07f57a0> a rr:ObjectMap ;
+    rml:reference "route_long_name" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/eccada16-9d2d-4ecf-bbd5-af5167b4422b> a rml:LogicalSource ;
+    rml:referenceFormulation ql:CSV ;
+    rml:source "CALENDAR_DATES.csv"^^xsd:string .
+
+<http://mapping.example.com/uuid/ed92a4d4-46b9-4c79-9775-8d9736b9d660> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/85354eba-e049-4647-bc79-d030c67eafca> ;
+    rr:predicateMap <http://mapping.example.com/uuid/587dd7f3-dc5d-4ce2-b5b7-47f7261d1738> .
+
+<http://mapping.example.com/uuid/ee0143e7-4dc6-4636-997d-95633415d179> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/ce614aba-f89b-4094-840e-075bdda8ebf9> ;
+    rr:predicateMap <http://mapping.example.com/uuid/95f657d1-2376-4c4b-8d2c-54bf7a62f879> .
+
+<http://mapping.example.com/uuid/ee1b2392-6878-46f8-a5a3-bd10f56ad138> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/1361f349-c99a-4656-ba3e-5ec42162276b> ;
+    rr:predicateMap <http://mapping.example.com/uuid/0d06a458-3541-4486-853d-0088b4f74429> .
+
+<http://mapping.example.com/uuid/eea28676-48c9-4151-a671-a31cfa237b39> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/5aef0f68-f209-43f5-b511-4d78665670ee> ;
+    rr:predicateMap <http://mapping.example.com/uuid/f774557b-571c-4f39-8900-1bd62c53069e> .
+
+<http://mapping.example.com/uuid/f0945056-4647-4610-9716-626f46c61adf> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/c2961788-7e2e-46bc-ad2c-0cf268068f84> ;
+    rr:predicateMap <http://mapping.example.com/uuid/0bcf7b62-d9e7-4b7a-8efe-9545c8c6f038> .
+
+<http://mapping.example.com/uuid/f171ac94-e418-4195-a231-ff495b50e975> a rr:PredicateMap ;
+    rr:constant <http://www.w3.org/2003/01/geo/wgs84_pos#long> .
+
+<http://mapping.example.com/uuid/f452280b-bab7-4ddc-8cca-38e7cf84ac0b> a rr:PredicateMap ;
+    rr:constant <http://schema.org/version> .
+
+<http://mapping.example.com/uuid/f45b14f3-0ad1-4fba-9c2c-302444cfc1d0> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/e0896e19-00ba-4fd4-8a85-302cb2747eaa> ;
+    rr:predicateMap <http://mapping.example.com/uuid/763a8628-6c4b-4074-9b14-0f5d4a86e80b> .
+
+<http://mapping.example.com/uuid/f54b43c3-ba6d-41ee-b4ef-8a3872017d30> a rr:ObjectMap ;
+    rml:reference "arrival_time" ;
+    rr:datatype xsd:duration ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/f6becdb2-8846-4af6-a3cb-bda48b8efd18> a rr:ObjectMap ;
+    rml:reference "departure_time" ;
+    rr:datatype xsd:duration ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/f733187c-e666-48aa-ad88-9bf386d6b5e3> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/69b30b4f-e9fa-4fd7-81dc-5c160510a3c4> ;
+    rr:predicateMap <http://mapping.example.com/uuid/e2529c48-d0f1-41c6-8a03-137a58518032> .
+
+<http://mapping.example.com/uuid/f774557b-571c-4f39-8900-1bd62c53069e> a rr:PredicateMap ;
+    rr:constant dcterms:date .
+
+<http://mapping.example.com/uuid/f7bb6ed3-2c7a-421c-82b2-e9eea771514e> a rr:ObjectMap ;
+    rml:reference "start_date" ;
+    rr:datatype xsd:date ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/f8aefe6c-5333-4945-ba4b-d01d65e0c3a9> a rr:ObjectMap ;
+    rml:reference "block_id" ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/f8b14ba6-0e4d-4503-89cf-6c8d228a4138> rr:child "stop_id" ;
+    rr:parent "stop_id" .
+
+<http://mapping.example.com/uuid/f8c2f779-b221-4b65-a926-8b8b0e41ab77> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/cc2f44e9-d55a-4818-9dbc-61c4e537394d> ;
+    rr:predicateMap <http://mapping.example.com/uuid/576a064f-8f25-4fad-924d-109a2aefb09c> .
+
+<http://mapping.example.com/uuid/f9ca7e34-72ae-4629-b3b3-a1f9c0a972ca> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/214890ac-911e-4742-9f4e-135c65976c88> ;
+    rr:predicateMap <http://mapping.example.com/uuid/31fa1897-b4f4-4b92-bd90-cd6ff807932d> .
+
+<http://mapping.example.com/uuid/fa5ffe8e-0ca4-43b4-8ef2-e41baa9f82ce> a rr:SubjectMap ;
+    rr:template "http://transport.linkeddata.es/madrid/metro/routes/{route_id}" .
+
+<http://mapping.example.com/uuid/fb7f4dde-c73b-48ee-8361-a6be73311573> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/490d65a9-30ee-4be1-a0a3-f1beca00c7ff> ;
+    rr:predicateMap <http://mapping.example.com/uuid/fefdde3c-6607-449f-933f-3ca886f4a3a2> .
+
+<http://mapping.example.com/uuid/fc7d40e7-dfc8-497e-aab5-2ae53b7a5c7b> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#trip> .
+
+<http://mapping.example.com/uuid/fcb49b74-0b1d-42a0-96d3-9effe9fa8571> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#route> .
+
+<http://mapping.example.com/uuid/fd052a6d-eea5-40f1-9981-71941798cd3c> a rr:ObjectMap ;
+    rml:reference "headway_secs" ;
+    rr:datatype xsd:integer ;
+    rr:termType rr:Literal .
+
+<http://mapping.example.com/uuid/fe745827-0049-49f8-abc0-a3d4dfbfa572> a rr:PredicateObjectMap ;
+    rr:objectMap <http://mapping.example.com/uuid/e763376b-4870-4a94-ba44-81184a50008f> ;
+    rr:predicateMap <http://mapping.example.com/uuid/ebda26be-b5e8-475c-84ce-5cc68e75a8c9> .
+
+<http://mapping.example.com/uuid/fefdde3c-6607-449f-933f-3ca886f4a3a2> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#timeZone> .
+
+<http://mapping.example.com/uuid/ffa1552d-ef04-4ab2-a7b7-09b9fc02a6a7> a rr:PredicateMap ;
+    rr:constant <http://vocab.gtfs.org/terms#tuesday> .
+
+<http://mapping.example.com/map_stops_0> a rr:TriplesMap ;
+    rdfs:label "stops" ;
+    rml:logicalSource <http://mapping.example.com/uuid/cc37c4d1-bfb6-4443-8a60-1ab08382467e> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/1a1a84b5-968a-49cf-a058-47ae10f83ea7>,
+        <http://mapping.example.com/uuid/1c415708-ad2b-4f00-bed0-04aa6d9e4b9c>,
+        <http://mapping.example.com/uuid/1dcd915e-ebae-4f18-b4cd-2d630661caac>,
+        <http://mapping.example.com/uuid/88d3454f-0fa3-451f-b070-2e080f06f508>,
+        <http://mapping.example.com/uuid/8bf16386-090d-4193-9cf7-5da0ed57f2e3>,
+        <http://mapping.example.com/uuid/96bc184a-a26e-451e-ad3d-ca5aa008239c>,
+        <http://mapping.example.com/uuid/ba184993-117f-4bd5-93e5-d4c9d6018579>,
+        <http://mapping.example.com/uuid/bba47195-ae4f-49ad-8823-9b57218692c0>,
+        <http://mapping.example.com/uuid/bd5fe84f-ab08-4be1-af4b-402961638435>,
+        <http://mapping.example.com/uuid/ed92a4d4-46b9-4c79-9775-8d9736b9d660>,
+        <http://mapping.example.com/uuid/ee1b2392-6878-46f8-a5a3-bd10f56ad138>,
+        <http://mapping.example.com/uuid/f45b14f3-0ad1-4fba-9c2c-302444cfc1d0>,
+        <http://mapping.example.com/uuid/f733187c-e666-48aa-ad88-9bf386d6b5e3> ;
+    rr:subjectMap <http://mapping.example.com/uuid/74aae730-f3eb-43b1-a8d7-ea460855ad56> .
+
+<http://mapping.example.com/map_trips_0> a rr:TriplesMap ;
+    rdfs:label "trips" ;
+    rml:logicalSource <http://mapping.example.com/uuid/4faa3fe0-9c08-48a0-9044-00826cf54a00> ;
+    rr:predicateObjectMap <http://mapping.example.com/uuid/0e13d243-48da-4b9b-9812-5e2f1f9856c6>,
+        <http://mapping.example.com/uuid/118dc918-ba53-4651-a368-f9f0e5052e6c>,
+        <http://mapping.example.com/uuid/5b3d691e-3858-4e44-ae33-f9efe958d357>,
+        <http://mapping.example.com/uuid/6033cfcc-bdc0-42a6-8b52-d680cd325b58>,
+        <http://mapping.example.com/uuid/6817bca9-14ef-4db7-b1ff-7d7d9742aba5>,
+        <http://mapping.example.com/uuid/c3a2ec9f-f9c0-40fa-8135-75f6e6a9d3a4>,
+        <http://mapping.example.com/uuid/c995d38f-74bf-45db-8724-d46ff57b5737>,
+        <http://mapping.example.com/uuid/cef889e9-c30f-445b-917e-02a0cdc9399c>,
+        <http://mapping.example.com/uuid/d7c3f325-b860-49fe-8daa-a0797804a778> ;
+    rr:subjectMap <http://mapping.example.com/uuid/d82d7ccc-4db8-48c7-8ae7-6dcc918e34dc> .
+

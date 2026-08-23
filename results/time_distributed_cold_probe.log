@@ -1,0 +1,10 @@
+tag: cold_probe
+k: 4
+partition_rows: 167
+phase_compute_delta_s: 0.517
+phase_partition_s: 0.004
+phase_normalize_s: 0.132
+phase_dispatch_s: 0.009
+phase_wait_workers_s: 3.408
+phase_merge_stale_apply_s: 0.447
+elapsed_seconds: 4.517

@@ -1,0 +1,10 @@
+tag: u10s2
+k: 4
+partition_rows: 28677
+phase_compute_delta_s: 3.890
+phase_partition_s: 0.235
+phase_normalize_s: 0.115
+phase_dispatch_s: 0.014
+phase_wait_workers_s: 1.749
+phase_merge_stale_apply_s: 6.370
+elapsed_seconds: 12.374

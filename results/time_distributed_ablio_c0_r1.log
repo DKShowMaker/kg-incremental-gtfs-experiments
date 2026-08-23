@@ -1,0 +1,14 @@
+tag: ablio_c0_r1
+k: 4
+partition_rows: 143386
+phase_compute_delta_s: 4.052
+phase_partition_s: 0.586
+phase_normalize_s: 0.093
+phase_dispatch_s: 0.010
+phase_wait_workers_s: 4.987
+phase_merge_stale_apply_s: 6.086
+conflict_dup_rows: 0
+total_retries: 0
+lock_wait_ms_total: 0
+lock_contention_total: 0
+elapsed_seconds: 15.816

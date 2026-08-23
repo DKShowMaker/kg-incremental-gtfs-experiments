@@ -1,0 +1,14 @@
+tag: abl_occ_c005_s5
+k: 4
+partition_rows: 150555
+phase_compute_delta_s: 4.841
+phase_partition_s: 0.778
+phase_normalize_s: 0.108
+phase_dispatch_s: 0.037
+phase_wait_workers_s: 4.744
+phase_merge_stale_apply_s: 8.032
+conflict_dup_rows: 7169
+total_retries: 2
+lock_wait_ms_total: 0
+lock_contention_total: 0
+elapsed_seconds: 18.540

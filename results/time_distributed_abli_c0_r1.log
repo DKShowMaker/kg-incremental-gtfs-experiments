@@ -1,0 +1,14 @@
+tag: abli_c0_r1
+k: 4
+partition_rows: 143386
+phase_compute_delta_s: 4.098
+phase_partition_s: 0.598
+phase_normalize_s: 0.095
+phase_dispatch_s: 0.008
+phase_wait_workers_s: 3.392
+phase_merge_stale_apply_s: 6.102
+conflict_dup_rows: 0
+total_retries: 0
+lock_wait_ms_total: 2
+lock_contention_total: 0
+elapsed_seconds: 14.293

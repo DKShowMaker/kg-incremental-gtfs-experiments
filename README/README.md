@@ -1,0 +1,232 @@
+# 增量知识图谱更新实验指导（基于真实CRTM GTFS数据）
+
+对应论文表1三行：全量重构、单线程增量更新、（并行方法另行实现）。本指导替换掉之前基于GTFS-Madrid-Bench/VIG生成器的版本——那条路线的数据存在占位符字段、组合键不唯一等问题（详见此前讨论），现改用CRTM（马德里交通管理局）发布的真实GTFS数据。
+
+## 0. 前提条件（每一条都需要你实测确认，不是默认成立）
+
+- 系统：Ubuntu 20.04；依赖：`openjdk-17-jre-headless`、`python3`、`git`、`time`（`/usr/bin/time -v`）
+- RMLMapper：<https://github.com/RMLio/rmlmapper-java/releases>
+- **mapping文件兼容性未验证**：之前用的`mapping.csv.nt`是GTFS-Madrid-Bench针对其VIG生成的CSV结构定制的，字段名/文件名（`STOP_TIMES.csv`大写+逗号分隔）和真实GTFS标准（`stop_times.txt`小写+`.txt`）不一定完全对得上。下载真实数据后第一步就是对比两边的列名，必要时需要另找一份兼容真实GTFS的RML映射（比如社区维护的LinkedGTFS本体相关映射），不能假设现成映射直接能用。
+- **join和blank node检查需要重新跑**：之前的`grep -c "rr:xxx"`因为mapping文件前缀不是`rr:`而是假阴性，正确的检查方式：
+  ```bash
+  grep -c "joinCondition\|parentTriplesMap" <你的mapping文件>
+  grep -c "BlankNode" <你的mapping文件>
+  ```
+  两个都是0，本指导里`compute_delta.py`（按文件独立diff）和`apply_delta_to_graph.py`（按subject字符串过滤）才适用；不是0的话，这两个脚本都需要相应调整，不能直接用。
+
+## 1. 获取真实数据
+
+```bash
+# CRTM开放数据门户，Metro线路GTFS（马德里地铁）
+# 手动从 https://datos.crtm.es/datasets/gtfs-red-de-metro 下载zip并解压
+mkdir -p data/before
+unzip crtm_metro_gtfs.zip -d data/before
+ls data/before   # 确认实际文件名（标准应为 stop_times.txt / trips.txt / stops.txt ...）
+head -1 data/before/stop_times.txt   # 确认实际列名，跟下面脚本里的--key-cols/--update-cols核对
+```
+
+`data/before`之后不再改动，作为5个独立seed共同的基准（before）。
+
+## 2. 生成5个独立的变更快照（after）
+
+```bash
+for seed in 1 2 3 4 5; do
+    python3 change_generator.py \
+        --input-dir data/before \
+        --output-dir data/after_seed${seed} \
+        --target-file stop_times.txt \
+        --key-cols trip_id,stop_sequence \
+        --update-cols arrival_time,departure_time \
+        --change-ratio 0.10 \
+        --seed ${seed} \
+        --log results/changelog_seed${seed}.csv
+done
+```
+
+每个seed都从同一份`data/before`独立生成，不做累积演化（对应之前确定的"5个独立seed取均值"设计）。
+
+## 3. 全量重构基线（表1第1行）
+
+```bash
+for seed in 1 2 3 4 5; do
+    bash run_full_reconstruction.sh \
+        mapping.ttl \
+        data/after_seed${seed} \
+        seed${seed} \
+        results \
+        rmlmapper.jar
+done
+python3 summarize_results.py --results-dir results --tags seed1,seed2,seed3,seed4,seed5
+```
+
+`summarize_results.py`按`time_seed{1..5}.log`这种命名找文件，如果你上面用的`round_tag`不是`seed1`这种格式，要么改脚本里的glob模式，要么统一命名。
+
+## 4. 单线程增量更新基线（表1第2行）
+
+先建一次baseline图谱（只做一次，不计入任何一行的耗时——它代表"更新到来之前，图已经存在"这个前提）：
+
+```bash
+bash run_full_reconstruction.sh mapping.ttl data/before baseline results rmlmapper.jar
+cp results/kg_baseline.nq results/baseline_graph.nq
+```
+
+找出StopTime的IRI模板（已知结果附在下面，但建议自己跑一遍确认你的mapping文件和之前用的是不是同一份）：
+
+```bash
+python3 find_iri_template.py --mapping mapping.ttl --source-file stop_times.txt
+```
+
+之前在GTFS-Madrid-Bench的映射里查到的模板是：
+```
+http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time}
+```
+**如果你换了新的mapping文件，这个模板大概率会变，必须重新查，不能沿用这个值。**
+
+跑5个seed：
+
+```bash
+for seed in 1 2 3 4 5; do
+    bash run_incremental_update.sh \
+        mapping.ttl \
+        data/before \
+        data/after_seed${seed} \
+        seed${seed} \
+        results \
+        "http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time}" \
+        rmlmapper.jar
+done
+python3 summarize_incremental.py --results-dir results --tags seed1,seed2,seed3,seed4,seed5
+```
+
+**已知局限，如实写进论文实验设置**：
+- `run_incremental_update.sh`目前只处理`stop_times.txt`一个文件的stale删除（用IRI模板直接算，不重新跑RMLMapper）。如果`change_generator.py`以后扩展到改动其他文件（trips.txt/routes.txt等），需要对那些文件也跑一次`find_iri_template.py`拿到各自的模板，`run_incremental_update.sh`和`compute_stale_iris.py`的调用需要相应扩展成多文件循环——现在的版本没有做这个泛化，只覆盖了目前实际在用的场景。
+- `run_incremental_update.sh`用`date +%s.%N`统计总耗时，没有像`run_full_reconstruction.sh`那样用`/usr/bin/time -v`记录内存峰值——如果表1也要报增量方法的内存数据，需要在脚本里对每个子步骤单独包一层`/usr/bin/time`，现在的版本没做这个（避免让脚本过度复杂），需要的话我可以再加。
+
+## 5. 正确性校验（强烈建议做，哪怕只做一次）
+
+```bash
+bash run_full_reconstruction.sh mapping.ttl data/after_seed1 verify results rmlmapper.jar
+diff <(sort results/kg_incremental_seed1.nq) <(sort results/kg_verify.nq) && \
+    echo "一致，增量流程正确" || echo "不一致，需要排查"
+```
+
+这一步跑通、结果一致，才有资格拿增量方法的耗时去和全量重构比——不一致说明diff/删除/应用这条链路某处有问题，必须先修好再报数字。
+
+## 6. 分布式增量更新实验（表1第3行：并行方法）
+
+在单线程增量（第4节）基础上，把"映射ΔD"这一步并行化：1个Redis容器承担任务队列+实体版本号存储两个职责，k个worker容器（各自`--cpus=1 --memory=1g`）运行常驻Java进程领任务处理，宿主机上的纯Python调度脚本负责分区、分发、等待、合并。
+
+### 6.0 架构与数据流
+
+```
+compute_delta.py产出的ΔD
+  -> 调度脚本按trip_id哈希(md5取模)分区成k份（每份独立数据目录+实体key列表）
+  -> 窄化mapping与分区无关：全局复用一份build_delta_mapping.py产物(delta_mapping_base.ttl)；
+     但normalize_mapping.py对每个分区各跑一次（指向各自数据目录）
+  -> 任务{mapping路径,输出路径,keys路径,attempts}推入Redis队列
+     （消息只传文件路径不搬数据；共享卷dist_work挂载到与宿主机相同的绝对路径，
+       normalize写进mapping的绝对路径在worker容器内同样有效）
+  -> 空闲worker(BRPOP)领任务：先HMGET记下全部实体key的当前版本号快照 ->
+     在同一JVM内直接调be.ugent.rml.cli.Main.main()映射本分区 ->
+     EVALSHA单个Lua脚本原子提交（KEYS=[versions]，ARGV=[k1,v1,...]：
+     第一遍校验全部key当前版本、缺失视为"0"，任一不匹配返回0；
+     全部匹配才第二遍统一HINCRBY。单脚本服务端原子执行，
+     不存在拆成"先读、再判、再写"三步之间的竞态窗口）
+  -> 成功LPUSH结果队列；版本冲突或映射异常 -> 抖动退避后整任务放回队列
+     （attempts+1），超过MAX_ATTEMPTS=3进死信队列tasks:dead并令实验失败
+  -> 调度器收齐k个完成汇报 -> 合并输出 -> compute_stale_iris.py(不变)
+     -> apply_delta_to_graph.py套用baseline（不变）
+```
+
+可靠性机制（两项均实测）：worker启动即安装**exit-guard**（SecurityManager，仅拦System.exit、其余权限全放行；JDK 17+需JVM加`-Djava.security.manager=allow`才允许安装，JDK 24起SM整体移除后此兜底失效退化为预检+重启）——RMLMapper错误路径的System.exit被转成可捕获异常而非带崩worker。领取任务用**BRPOPLPUSH**转入`tasks:processing`列表并盖`claimed_at`时间戳，worker后台守护线程扫描超过`STALE_MS`(默认120s)未完成的任务重投（attempts+1）；重复处理由版本号OCC保证安全。注意watcher必须用独立Jedis连接（共享实例非线程安全，RESP应答会串线）。
+
+实体key采用**逻辑键`trip_id|stop_sequence`**而非subject IRI：update会改变arrival_time从而改变IRI，逻辑键跨update稳定，同一记录的并发更新才能正确撞版本号。
+
+### 6.1 前提条件（每条都实测过）
+
+- Docker + docker compose v2；能拉到`redis:7-alpine`和JDK基础镜像。若Docker Hub被网络阻断，官方镜像在ECR Public有镜像仓库：`docker pull public.ecr.aws/docker/library/redis:7-alpine`后`docker tag`回标准名即可。
+- `dist/lib/`下有Jedis及其运行期依赖jar（jedis-5.2.0、commons-pool2-2.12.0、slf4j-api-2.0.13，Maven Central直接下载）。
+- `dist/rmlmapper.jar`（硬链接到顶层同一文件即可）。**注意RMLMapper 8.1.0需要Java 21**（class文件版本65），worker基础镜像必须用temurin **21**——用17会报UnsupportedClassVersionError且每任务秒级快速失败进死信队列。Dockerfile里javac与运行时classpath都必须带上rmlmapper.jar（worker要直接引用Main类）。
+- bind mount的`dist_work/`目录如果由dockerd自动创建会归root所有，调度器写不进去；先手动`mkdir dist_work`再`compose up`。
+- **第0步实测结论已补齐**（探针：`dist/src/MainExitProbe.java`）：RMLMapper的`Main.main()`成功路径正常返回、同JVM可重复调用、输出逐行一致（首次1122ms，复用后136ms——类加载只付一次）；但**错误路径会System.exit(1)带崩整个JVM**。因此worker在调用前预检mapping文件存在、调用包try/catch(Throwable)，compose给worker配`restart: unless-stopped`兜底未预见的内部exit路径。
+
+### 6.2 文件清单（新增部分）
+
+| 文件 | 作用 |
+|---|---|
+| `dist/src/Worker.java` | 常驻worker主循环：BRPOPLPUSH领任务→HMGET版本快照→同JVM直调Main.main()→EVALSHA原子提交→汇报/重试/死信；内置exit-guard与超时重投watcher |
+| `dist/src/ExitGuardProbe.java` | SecurityManager拦System.exit的可行性探针（JDK 21需-Djava.security.manager=allow） |
+| `dist/src/MainExitProbe.java` | 第0步探针：验证Main.main()成功路径正常返回/可重复/错误路径System.exit——in-process复用的依据 |
+| `dist/Dockerfile.worker` | temurin 21镜像：javac编译worker类，ENTRYPOINT直跑主循环（不是跑一次就退出） |
+| `dist/lib/*.jar` | Jedis及依赖 |
+| `docker-compose.yml` | redis服务(127.0.0.1:6379) + worker服务(cpus:1, mem_limit:1g)；共享卷`./dist_work:/home/ztr/KG/dist_work`（容器内挂载点=宿主机绝对路径，见6.0说明） |
+| `run_distributed_update.py` | 宿主机调度器（纯Python零第三方依赖，内置mini-RESP客户端）：diff→分区→逐分区normalize→推任务→等k个汇报→合并→stale→apply |
+
+### 6.3 运行步骤
+
+```bash
+# 首次：构建镜像并启动1个redis + k个worker（常驻，跨实验复用）
+cd /home/ztr/KG && mkdir -p dist_work   # 必须先以当前用户创建，见6.1
+docker compose build worker
+docker compose up -d --scale worker=4
+
+# 每轮实验（seedN）：端到端计时口径与第4节对齐（diff开始到apply结束）
+python3 run_distributed_update.py \
+    --before data/before --after data/after_seed${s} --tag seed${s} --k 4 \
+    --baseline results/baseline_graph.nq --mapping delta_mapping_base.ttl
+# 输出 results/kg_distributed_seed${s}.nq 与 results/time_distributed_seed${s}.log
+
+# 收尾（可选）：docker compose down
+```
+
+### 6.4 验证清单（本机已全部通过）
+
+1. **第0步探针（`MainExitProbe`）**：成功路径正常返回、二次调用136ms且输出逐行一致；错误路径确认会System.exit(1)带崩JVM——据此设计输入预检+restart兜底。
+2. **Lua提交脚本三分支单测**：全匹配→提交成功且各+1；expected不匹配→拒绝且任何key不动；多key部分匹配→all-or-nothing整体拒绝。这是"原子性"声明的直接证据。
+3. **冲突路径强制测试**：利用RMLMapper子进程约1s的启动窗口，在worker HMGET之后人为HSET篡改版本号→提交时检测到冲突→重试(attempts=1)→读到新版本后提交成功。证明重试链路真实可用，而非纸面设计。
+4. **端到端一致性**：5个seed的`kg_distributed_seedN.nq`与单线程`kg_incremental_seedN.nq`逐一`sort`+`diff`完全一致。
+5. **资源限制生效**：`docker stats`确认每个worker容器被限制在1 CPU/1GiB。
+
+### 6.5 已知局限（如实声明）
+
+- **固定成本的构成已变**：改为同JVM直调后，k次JVM启动被消除（首次实验付一次类加载~1.1s，此后worker常驻复用），稳态下k=4反超单线程约2.15倍。剩余固定开销为Redis往返与合并IO。
+- **增益饱和点远超本数据集**：纯映射曲线拟合T_map(N)≈95ms+56µs·N；并行/串行比值达到3.0×需要ΔD≈8.5万行，而本feed的ΔD天花板仅2216行（change_ratio=1.0）——要展示接近k倍的加速需换大feed或合成扩充（详见实验报告7.5节）。
+- **按构造无自然冲突**：trip_id哈希分区下各分区的StopTime实体天然不相交（IRI含trip_id），版本冲突不会自然发生，重试路径靠6.4.2的强制测试证明。
+- **两类任务丢失风险**：(a) BRPOP弹出后进程崩溃则该任务不在队列中（未做processing列表回捞）；(b) 同JVM直调后，RMLMapper内部未预见的错误路径可能System.exit带崩worker，正在处理的任务随之丢失（compose的restart策略会拉起容器继续处理后续任务）。缓解手段分别是BRPOPLPUSH/Streams与更完整的输入预校验，生产化时需要补。
+- **compose中的绝对路径耦合**：卷挂载目标写死为`/home/ztr/KG/dist_work`以保证mapping内绝对路径两侧一致；代码库迁移位置需同步修改`docker-compose.yml`与`run_distributed_update.py`里的`SHARED_ROOT`。
+
+## 文件清单
+
+| 文件 | 作用 |
+|---|---|
+| `change_generator.py` | 对一个GTFS文件独立生成一轮10%变更（Insert/Update/Delete/Composite） |
+| `compute_delta.py` | 按主键diff before/after，输出delta_dir（新增+更新后）和stale_dir（待删除的旧行） |
+| `normalize_mapping.py` | 把mapping文件里的数据源路径改指向指定目录 |
+| `find_iri_template.py` | 顺着mapping的引用链查某个实体的IRI模板 |
+| `compute_stale_iris.py` | 用IRI模板把stale_dir的旧行直接拼成待删除的subject IRI列表 |
+| `apply_delta_to_graph.py` | baseline图谱按subject删除stale IRI，再并入delta三元组 |
+| `run_full_reconstruction.sh` | 全量重构基线：单份数据从头跑一次RMLMapper，记录耗时/内存 |
+| `run_incremental_update.sh` | 单线程增量更新基线：diff→映射delta→算stale IRI→应用变更 |
+| `summarize_results.py` | 汇总全量重构的`/usr/bin/time -v`日志 |
+| `summarize_incremental.py` | 汇总增量更新的耗时日志 |
+| `build_delta_mapping.py` | 从完整mapping提取stoptimes专用delta映射（join→已验证等价的模板），供增量与分布式实验使用 |
+| `build_tprime_mapping.py` | T'分解实验：完整mapping仅替换shapes→shape_points这一个二次方join为等价模板 |
+| `run_distributed_update.py` | 分布式增量更新调度器（第6节）：分区、分发、等待、合并、应用 |
+| `dist/src/Worker.java` 等 | 第6节分布式实验的worker源码、Dockerfile（见6.2文件清单） |
+
+### 实测结果汇总（本机，2025-08）
+
+| 方法 | 耗时（均值±标准差，5次） | 内存峰值 |
+|---|---|---|
+| 全量重构（表1第1行） | 1842.21 ± 102.25 s | 1130.5 ± 72.3 MB |
+| T'（消除单个O(n²) join的全量重构） | 11.07 ± 0.29 s | 1139.0 ± 66.3 MB |
+| 单线程增量更新（表1第2行） | 3.02 ± 0.10 s（最终轮） | 未记录（见4节局限） |
+| 分布式增量更新 k=4（表1第3行） | **稳态 1.40 ± 0.05 s**（含冷启动原始均值 2.09 ± 1.54 s） | 见6.5局限说明 |
+
+增量两行的绝对耗时存在会话间漂移（机器负载所致，±30%以内），但同会话内相对关系稳定：**稳态约2.15倍、含冷启动均值约1.44倍**，且分布式输出与单线程逐一完全一致。
+
+全部方法输出两两逐行一致（各5次独立seed）；正确性校验方式见第5节与6.4。
+
+**机制消融（表2）**：`ablation/`目录。含两项关键设计修正（均由实测驱动）：①提交栅栏——分区映射时长差异使提交瞬间天然错开数百毫秒，全局锁永远观测不到真实竞争，故各worker映射完成后在Redis栅栏处会合、全员到齐同时放行；②交错配对测量——矩阵按冲突率顺序执行时宿主性能漂移会造成"锁随冲突率变快"的假趋势，改为c0/c20背靠背交替。最终结论（u50档×{0%,20%}×5轮，全部输出与单线程一致）：两机制端到端耗时统计等同（锁/OCC=0.95–0.98）；结构性指标清晰分离——OCC重试每轮恰2次、锁等锁8→139ms/竞争0→11次随冲突率单调增长。协调成本(百毫秒级)被映射与apply成本(十秒级)稀释，本规模下不能宣称哪种机制整体更优。设计详见`ablation/README.md`。
+
+**规模扩展验证（真实巴士feed）**：在`GTFS Red de Autobuses Urbanos`（stop_times 382,362行，列结构与metro完全一致）上重复增量实验，比例扫描{10%,25%,50%}×5 seed：单线程19.62/25.87/38.98s，分布式k=4稳态12.05/14.95/18.68s，稳态比值1.63×→1.73×→2.09×随ΔD单调上升，15对输出逐一一致。基线图谱用全join线性化映射（`build_full_linear_mapping.py`，11替换+1保留，73秒建成377万quad）。注意：`run_incremental_update.sh`的baseline已参数化（第9个参数），跨数据集实验须传入对应图谱。

@@ -1,0 +1,14 @@
+tag: lockv_c020_s1
+k: 4
+partition_rows: 172063
+phase_compute_delta_s: 4.626
+phase_partition_s: 0.850
+phase_normalize_s: 0.101
+phase_dispatch_s: 0.011
+phase_wait_workers_s: 11.160
+phase_merge_stale_apply_s: 8.750
+conflict_dup_rows: 28677
+total_retries: 0
+lock_wait_ms_total: 33
+lock_contention_total: 0
+elapsed_seconds: 25.498

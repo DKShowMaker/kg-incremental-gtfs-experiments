@@ -1,0 +1,19 @@
+# 分布式增量更新实验的worker镜像。
+# 基础镜像用JDK（编译在构建阶段完成，运行时只需java）；
+# 镜像内含rmlmapper.jar、Redis客户端jar、编译好的常驻worker类。
+FROM eclipse-temurin:21-jdk-jammy
+
+WORKDIR /opt/app
+
+COPY lib/ lib/
+COPY src/ src/
+COPY rmlmapper.jar .
+
+RUN javac -cp "lib/*:rmlmapper.jar" -d classes src/Worker.java
+
+ENV REDIS_HOST=redis \
+    REDIS_PORT=6379
+
+# 关键：启动命令直接进入常驻主循环，不是跑一次性任务后退出——
+# 这是"复用worker进程"能否成立的关键
+ENTRYPOINT ["java", "-Xmx1750m", "-Djava.security.manager=allow", "-cp", "classes:lib/*:rmlmapper.jar", "Worker"]

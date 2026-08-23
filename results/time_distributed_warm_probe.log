@@ -1,0 +1,10 @@
+tag: warm_probe
+k: 4
+partition_rows: 167
+phase_compute_delta_s: 0.414
+phase_partition_s: 0.004
+phase_normalize_s: 0.102
+phase_dispatch_s: 0.008
+phase_wait_workers_s: 0.228
+phase_merge_stale_apply_s: 0.543
+elapsed_seconds: 1.298

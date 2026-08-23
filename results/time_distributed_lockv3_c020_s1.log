@@ -1,0 +1,14 @@
+tag: lockv3_c020_s1
+k: 4
+partition_rows: 172063
+phase_compute_delta_s: 4.627
+phase_partition_s: 0.870
+phase_normalize_s: 0.104
+phase_dispatch_s: 0.008
+phase_wait_workers_s: 12.014
+phase_merge_stale_apply_s: 8.363
+conflict_dup_rows: 28677
+total_retries: 0
+lock_wait_ms_total: 87
+lock_contention_total: 5
+elapsed_seconds: 25.987
