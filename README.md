@@ -12,20 +12,21 @@
 | 分布式增量 k=4（同JVM复用） | Urbanos 38万行 | 稳态1.40±0.05 s，较单线程快2.15× |
 | 机制消融 | Urbanos u50档×冲突率{0,5,20}% | 低冲突两机制等同；并行较单线程稳健1.58–2.42× |
 
-完整数据与分析见 **[实验报告.md](实验报告.md)**。
+完整数据与分析见 **[docs/实验报告.md](docs/实验报告.md)**。
 
 ## 文档
 
 | 文档 | 内容 |
 |---|---|
-| [README/README.md](README/README.md) | **实验指导**：从数据获取到各实验的完整可复现步骤（含分布式/Docker一节与全部已知局限） |
-| [实验报告.md](实验报告.md) | **实验报告**：结果、分析，以及全过程中遇到的问题与定位过程（重点章节§4、§8） |
+| [docs/实验指导.md](docs/实验指导.md) | **实验指导**：从数据获取到各实验的完整可复现步骤（含分布式/Docker一节与全部已知局限） |
+| [docs/实验报告.md](docs/实验报告.md) | **实验报告**：结果、分析，以及全过程中遇到的问题与定位过程（重点章节§4、§8） |
 
 ## 目录结构
 
 ```
-├── README/                  # 原始实验指导（含早期脚本快照，工作副本在根目录）
-│   └── README.md            # 实验指导主文档
+├── docs/
+│   ├── 实验指导.md           # 实验指导主文档（数据获取→各实验完整步骤）
+│   └── 实验报告.md           # 实验报告全文
 ├── change_generator.py      # ΔD变更生成（Insert/Update/Delete/Composite四操作）
 ├── compute_delta.py         # before/after按主键diff
 ├── normalize_mapping.py     # mapping数据源路径改写（含.csv镜像兜底）
@@ -54,7 +55,7 @@
 1. **依赖**：JDK 21+（RMLMapper 8.1.0要求class版本65）、Python 3.10+、Docker Compose v2。
 2. **RMLMapper**：从 [RMLio releases](https://github.com/RMLio/rmlmapper-java/releases) 获取jar放至根目录与`dist/`（或调整Dockerfile挂载）。
 3. **数据**：Metro feed来自datos.crtm.es（网络受阻时走ECR/ArcGIS侧通道，见指导文档§1）；Urbanos feed获取方式同。
-4. **顺序**：按 `README/README.md` §0–§5 执行metro主线；§6 为分布式；消融见 `ablation/README.md`。
+4. **顺序**：按 `docs/实验指导.md` §0–§5 执行metro主线；§6 为分布式；消融见 `ablation/README.md`。
 5. **注意**：所有脚本默认在仓库根目录执行；跨数据集实验需传入对应baseline图谱（`run_incremental_update.sh`第9参数）。
 
 ## 引用的外部组件
