@@ -47,7 +47,8 @@ public class Worker {
     static final long STALE_MS = Long.parseLong(env("STALE_MS", "120000"));
     static final int MAX_ATTEMPTS = 3;
     static final Set<String> NUMERIC_FIELDS = Set.of("attempts", "claimed_at",
-            "lock_wait_ms", "lock_contention", "mapped_ms", "barrier_k");
+            "lock_wait_ms", "lock_contention", "mapped_ms", "mapped_finished_at_ms",
+            "barrier_k");
 
     /**
      * 原子提交脚本。KEYS[1]=versions哈希名，ARGV=[k1,v1,k2,v2,...]。
@@ -138,6 +139,11 @@ public class Worker {
         List<String> keys = readKeys(t.get("keys"));
         if (keys.isEmpty()) {
             log(workerId, id + ": empty keys file, finish directly");
+            Files.write(Paths.get(t.get("output")), new byte[0]);
+            t.put("mapped_ms", "0");
+            t.put("mapped_finished_at_ms", String.valueOf(System.currentTimeMillis()));
+            t.put("mapped_worker_id", workerId);
+            t.put("worker_id", workerId);
             finish(jedis, t, stamped);
             return;
         }
@@ -149,7 +155,6 @@ public class Worker {
 
         String[] rmlArgs = new String[]{
                 "-m", t.get("mapping"), "-o", t.get("output"), "-s", "nquads"};
-        long mapStart = System.currentTimeMillis();
         boolean isLock = MODE.equals("lock");
 
         // occ模式：版本号快照保持在映射之前（保留"宽检测窗口"的原始语义）
@@ -163,6 +168,7 @@ public class Worker {
             if (!new File(t.get("mapping")).isFile()) {
                 throw new java.io.IOException("mapping不存在: " + t.get("mapping"));
             }
+            long mapStart = System.nanoTime();
             try {
                 be.ugent.rml.cli.Main.main(rmlArgs);
             } catch (Throwable e) {
@@ -171,7 +177,19 @@ public class Worker {
             if (!new File(t.get("output")).isFile()) {
                 throw new java.io.IOException("RMLMapper未产生输出: " + t.get("output"));
             }
+            t.put("mapped_ms", String.valueOf((System.nanoTime() - mapStart) / 1_000_000));
+            t.put("mapped_finished_at_ms", String.valueOf(System.currentTimeMillis()));
+            t.put("mapped_worker_id", workerId);
+            String mappedStamped = toJson(t);
+            jedis.lrem(PROCESSING, 1, stamped);
+            jedis.lpush(PROCESSING, mappedStamped);
+            stamped = mappedStamped;
+        } else {
+            t.putIfAbsent("mapped_ms", "0");
+            t.putIfAbsent("mapped_finished_at_ms", String.valueOf(System.currentTimeMillis()));
+            t.putIfAbsent("mapped_worker_id", workerId);
         }
+        t.put("worker_id", workerId);
 
         // 消融实验提交栅栏：必须位于映射之后、提交之前——各分区映射时长不同，
         // 若栅栏放在映射前，放行后仍会因映射耗时差异再次错开提交瞬间
@@ -225,7 +243,6 @@ public class Worker {
             done.putIfAbsent("status", "ok");
             done.put("lock_wait_ms", String.valueOf(waited));
             done.put("lock_contention", String.valueOf(contention));
-            done.put("mapped_ms", needMap ? String.valueOf(System.currentTimeMillis() - mapStart) : "0");
             jedis.lpush(RESULT_QUEUE, toJson(done));
             jedis.lrem(PROCESSING, 1, stamped);
             return;

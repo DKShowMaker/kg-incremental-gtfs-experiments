@@ -99,6 +99,7 @@ def main():
     for f in after_dir.glob("*.txt"):
         shutil.copy(f, delta_dir / f.name)
 
+    total_delta_rows = 0
     for after_file in sorted(after_dir.glob("*.txt")):
         name = after_file.name
         before_file = before_dir / name
@@ -110,6 +111,7 @@ def main():
         inserted, updated, stale_rows, fieldnames = diff_file(before_file, after_file, key_cols)
 
         delta_rows = inserted + updated
+        total_delta_rows += len(delta_rows)
         if delta_rows:
             save_rows(delta_dir / name, delta_rows, fieldnames)
         if stale_rows:
@@ -117,7 +119,8 @@ def main():
 
         print(f"{name}: insert={len(inserted)}, update={len(updated)}, stale(待删除旧行)={len(stale_rows)}")
 
-    print(f"\n[完成] delta写入 {delta_dir}，stale写入 {stale_dir}")
+    print(f"\ndelta_rows: {total_delta_rows}")
+    print(f"[完成] delta写入 {delta_dir}，stale写入 {stale_dir}")
 
 
 if __name__ == "__main__":

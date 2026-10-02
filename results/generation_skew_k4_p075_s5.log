@@ -1,0 +1,2 @@
+[skew] k=4, p=0.75, partition0_base_rows=97056, mapped_delta_rows=28677, forced_partition0_rows=21508, quotas={'insert': 7169, 'update': 7169, 'composite': 7170}
+[done] stop_times.txt: before=382362, insert=9559, update=9559, delete=9559, composite=9559, after=382362, mapped_delta_rows=28677

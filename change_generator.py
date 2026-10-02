@@ -17,10 +17,14 @@
 """
 import argparse
 import csv
+import json
+import math
 import random
 import re
 import shutil
 from pathlib import Path
+
+from partitioning import partition_for_trip_id
 
 TIME_RE = re.compile(r"^\d+:[0-5]\d:[0-5]\d$")
 
@@ -89,6 +93,20 @@ def copy_tree(src, dst):
     shutil.copytree(src, dst)
 
 
+def allocate_biased_counts(counts, total_biased):
+    total = sum(counts.values())
+    if not total:
+        return {name: 0 for name in counts}
+    quotas = {name: math.floor(count * total_biased / total)
+              for name, count in counts.items()}
+    remainder = total_biased - sum(quotas.values())
+    order = sorted(counts, key=lambda name: (
+        -(counts[name] * total_biased / total - quotas[name]), name))
+    for name in order[:remainder]:
+        quotas[name] += 1
+    return quotas
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input-dir", required=True)
@@ -98,13 +116,22 @@ def main():
     parser.add_argument("--update-cols", default="arrival_time,departure_time")
     parser.add_argument("--change-ratio", type=float, default=0.10)
     parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--partition-skew-p", type=float, default=None,
+                        help="映射变更中定向取自分区0的比例；提供此参数即启用倾斜模式")
+    parser.add_argument("--partition-k", type=int, default=4,
+                        help="倾斜实验使用的分区数，必须与调度器--k一致")
     parser.add_argument("--log", required=True)
     args = parser.parse_args()
 
     if not 0 < args.change_ratio <= 1:
         raise ValueError("--change-ratio 必须在 (0, 1] 区间")
+    if args.partition_skew_p is not None:
+        if not 0 <= args.partition_skew_p <= 1:
+            raise ValueError("--partition-skew-p 必须在 [0, 1] 区间")
+        if args.partition_k < 1:
+            raise ValueError("--partition-k 必须为正数")
 
-    random.seed(args.seed)
+    rng = random.Random(args.seed)
     input_dir = Path(args.input_dir)
     output_dir = Path(args.output_dir)
     target_path = output_dir / args.target_file
@@ -132,11 +159,74 @@ def main():
     if n_delete + n_update + n_composite > n_total:
         raise ValueError("目标文件行数太少，无法生成不重叠的变更操作")
 
-    indices = list(range(n_total))
-    random.shuffle(indices)
-    delete_idx = set(indices[:n_delete])
-    update_idx = set(indices[n_delete:n_delete + n_update])
-    composite_idx = set(indices[n_delete + n_update:n_delete + n_update + n_composite])
+    insert_bases = []
+    partition0_base_rows = None
+    forced_partition0_rows = None
+    mapped_total = None
+    if args.partition_skew_p is None:
+        indices = list(range(n_total))
+        rng.shuffle(indices)
+        delete_idx = set(indices[:n_delete])
+        update_idx = set(indices[n_delete:n_delete + n_update])
+        composite_idx = set(indices[n_delete + n_update:n_delete + n_update + n_composite])
+    else:
+        if "trip_id" not in fieldnames:
+            raise KeyError("倾斜模式要求目标CSV包含trip_id列")
+        home0 = [i for i, row in enumerate(rows)
+                 if partition_for_trip_id(row["trip_id"], args.partition_k) == 0]
+        partition0_base_rows = len(home0)
+        update_candidates = [i for i, row in enumerate(rows)
+                             if shift_time(row[update_cols[0]], 60 + args.seed) is not None]
+        composite_candidates = [i for i, row in enumerate(rows)
+                                if any(shift_time(row[col], 120 + args.seed) is not None
+                                       for col in update_cols)]
+        if len(update_candidates) < n_update or len(composite_candidates) < n_composite:
+            raise ValueError("可变更时间字段的行数不足以维持固定的映射ΔD行数")
+        mapped_counts = {"insert": n_insert, "update": n_update,
+                         "composite": n_composite}
+        mapped_total = sum(mapped_counts.values())
+        forced_total = int(math.floor(mapped_total * args.partition_skew_p + 0.5))
+        forced_partition0_rows = forced_total
+        quotas = allocate_biased_counts(mapped_counts, forced_total)
+
+        update_candidate_set = set(update_candidates)
+        composite_candidate_set = set(composite_candidates)
+        update_home = [i for i in home0 if i in update_candidate_set]
+        composite_home = [i for i in home0 if i in composite_candidate_set]
+        if len(update_home) < quotas["update"]:
+            raise ValueError("分区0中可用于update的行数不足以满足偏斜比例")
+        forced_update = set(rng.sample(update_home, quotas["update"]))
+        composite_home = [i for i in composite_home if i not in forced_update]
+        if len(composite_home) < quotas["composite"]:
+            raise ValueError("分区0中可用于composite的行数不足以满足偏斜比例")
+        forced_composite = set(rng.sample(composite_home, quotas["composite"]))
+
+        update_rest = [i for i in update_candidates
+                       if i not in forced_update and i not in forced_composite]
+        update_rest_selected = set(rng.sample(update_rest, n_update - len(forced_update)))
+        composite_used = forced_update | forced_composite | update_rest_selected
+        composite_rest = [i for i in composite_candidates if i not in composite_used]
+        composite_rest_selected = set(
+            rng.sample(composite_rest, n_composite - len(forced_composite)))
+        update_idx = forced_update | update_rest_selected
+        composite_idx = forced_composite | composite_rest_selected
+
+        remaining = [i for i in range(n_total)
+                     if i not in update_idx and i not in composite_idx]
+        if len(remaining) < n_delete:
+            raise ValueError("可用于delete的剩余行数不足")
+        delete_idx = set(rng.sample(remaining, n_delete))
+
+        insert_home = [rows[i] for i in home0]
+        for j in range(n_insert):
+            pool = insert_home if j < quotas["insert"] else rows
+            if not pool:
+                raise ValueError("分区0没有可用于insert模板的行")
+            insert_bases.append(rng.choice(pool))
+
+        print(f"[skew] k={args.partition_k}, p={args.partition_skew_p:.2f}, "
+              f"partition0_base_rows={len(home0)}, mapped_delta_rows={mapped_total}, "
+              f"forced_partition0_rows={forced_total}, quotas={quotas}")
 
     change_log = []
     new_rows = []
@@ -171,8 +261,10 @@ def main():
     existing_keys = {row_key(r, key_cols) for r in rows}
     used_new_keys = set()
 
-    for j in range(n_insert):
-        base_row = random.choice(rows)
+    if args.partition_skew_p is None:
+        insert_bases = [rng.choice(rows) for _ in range(n_insert)]
+
+    for j, base_row in enumerate(insert_bases):
         offset = args.seed * 100000 + j
         while True:
             base = make_new_key(base_row, key_cols, offset=offset)
@@ -189,6 +281,19 @@ def main():
 
     save_rows(target_path, new_rows, fieldnames)
 
+    if args.partition_skew_p is not None:
+        manifest = {
+            "partition_hash": "md5-bigint-mod-k",
+            "partition_k": args.partition_k,
+            "partition_skew_p": args.partition_skew_p,
+            "partition0_base_rows": partition0_base_rows,
+            "forced_partition0_rows": forced_partition0_rows,
+            "mapped_delta_rows_expected": mapped_total,
+            "seed": args.seed,
+        }
+        (output_dir / ".partition_skew.json").write_text(
+            json.dumps(manifest, sort_keys=True) + "\n", encoding="utf-8")
+
     log_path = Path(args.log)
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open("w", newline="", encoding="utf-8") as f:
@@ -197,7 +302,8 @@ def main():
         writer.writerows(change_log)
 
     print(f"[done] {args.target_file}: before={n_total}, insert={n_insert}, update={n_update}, "
-          f"delete={n_delete}, composite={n_composite}, after={len(new_rows)}")
+          f"delete={n_delete}, composite={n_composite}, after={len(new_rows)}, "
+          f"mapped_delta_rows={n_insert + n_update + n_composite}")
 
 
 if __name__ == "__main__":

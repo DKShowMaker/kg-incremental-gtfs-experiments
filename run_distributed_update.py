@@ -25,13 +25,14 @@
 """
 import argparse
 import csv
-import hashlib
 import json
 import socket
 import subprocess
 import sys
 import time
 from pathlib import Path
+
+from partitioning import partition_for_trip_id
 
 STOPTIME_TEMPLATE = ("http://transport.linkeddata.es/madrid/metro/"
                      "stoptimes/{trip_id}-{stop_id}-{arrival_time}")
@@ -121,7 +122,7 @@ def partition_delta(delta_file, k, out_root, conflict_rate=0.0, rng_seed=42):
         rows = list(reader)
 
     def home_of(r):
-        return int(hashlib.md5(r["trip_id"].encode()).hexdigest(), 16) % k
+        return partition_for_trip_id(r["trip_id"], k)
 
     assign = [[] for _ in range(k)]
     for idx, r in enumerate(rows):
@@ -189,6 +190,14 @@ def main():
     if not Path(args.mapping).is_file():
         sys.exit(f"找不到窄化mapping {args.mapping}")
 
+    skew_manifest_path = Path(args.after) / ".partition_skew.json"
+    skew_manifest = None
+    if skew_manifest_path.is_file():
+        skew_manifest = json.loads(skew_manifest_path.read_text(encoding="utf-8"))
+        generated_k = int(skew_manifest["partition_k"])
+        if generated_k != args.k:
+            sys.exit(f"倾斜输入按k={generated_k}生成，调度器收到k={args.k}；请按新k重新生成")
+
     t0 = time.time()
 
     # 1) diff：复用现有compute_delta.py
@@ -201,6 +210,11 @@ def main():
     counts, dup_rows = partition_delta(work / "delta" / "stop_times.txt",
                                        args.k, shared_tag,
                                        args.conflict_rate, args.rng_seed)
+    if skew_manifest is not None:
+        expected = int(skew_manifest["mapped_delta_rows_expected"])
+        actual = sum(counts) - dup_rows
+        if actual != expected:
+            sys.exit(f"倾斜输入预期ΔD={expected}行，实际分区前ΔD={actual}行")
     t_partition = time.time() - t0 - t_diff
     print(f"[partition] k={args.k}, 各分区行数={counts}")
 
@@ -243,6 +257,8 @@ def main():
     # 5) 阻塞等k个完成汇报（按id先到先得：超时重投的陈旧双跑汇报被忽略）
     done_ids, outputs = set(), {}
     tot_retries = tot_lockwait = tot_contention = 0
+    mapped_ms_by_partition, mapped_finish_by_partition = {}, {}
+    mapped_worker_by_partition = {}
     deadline = args.timeout
     while len(done_ids) < args.k:
         item = rc.cmd("BLPOP", "results:done", deadline, timeout=deadline + 5)
@@ -255,13 +271,20 @@ def main():
             continue
         done_ids.add(done["id"])
         outputs[done["id"]] = done["output"]
+        part_id = int(done["id"].rsplit("-p", 1)[1])
+        mapped_ms_by_partition[part_id] = int(done.get("mapped_ms", 0))
+        mapped_finish_by_partition[part_id] = int(done.get("mapped_finished_at_ms", 0))
+        mapped_worker_by_partition[part_id] = done.get(
+            "mapped_worker_id", done.get("worker_id", "unknown"))
         tot_retries += int(done.get("attempts", 0))
         tot_lockwait += int(done.get("lock_wait_ms", 0))
         tot_contention += int(done.get("lock_contention", 0))
         print(f"[result] {done['id']} status={done.get('status')} "
-              f"attempts={done.get('attempts','0')} "
-              f"lock_wait={done.get('lock_wait_ms','0')}ms "
-              f"({len(done_ids)}/{args.k})")
+                f"attempts={done.get('attempts','0')} "
+                f"mapped={mapped_ms_by_partition[part_id]}ms "
+                f"worker={mapped_worker_by_partition[part_id]} "
+                f"lock_wait={done.get('lock_wait_ms','0')}ms "
+                f"({len(done_ids)}/{args.k})")
     if rc.cmd("LLEN", "tasks:dead") > 0:
         sys.exit("[FATAL] 死信队列非空，存在未成功分区")
     t_wait = time.time() - t0 - t_diff - t_partition - t_normalize - t_dispatch
@@ -304,10 +327,23 @@ def main():
 
     elapsed = time.time() - t0
     t_tail = elapsed - t_diff - t_partition - t_normalize - t_dispatch - t_wait
+    mapped_duration_spread = (max(mapped_ms_by_partition.values())
+                              - min(mapped_ms_by_partition.values()))
+    mapped_finish_spread = (max(mapped_finish_by_partition.values())
+                            - min(mapped_finish_by_partition.values()))
     with open(time_log, "w", encoding="utf-8") as f:
         f.write(f"tag: {args.tag}\n")
         f.write(f"k: {args.k}\n")
         f.write(f"partition_rows: {sum(counts)}\n")
+        f.write(f"partition0_share_skew_s: {args.k * counts[0] / sum(counts) if sum(counts) else 0:.6f}\n")
+        for i, count in enumerate(counts):
+            f.write(f"partition_{i}_rows: {count}\n")
+        for i in range(args.k):
+            f.write(f"mapped_ms_p{i}: {mapped_ms_by_partition[i]}\n")
+            f.write(f"mapped_finished_at_ms_p{i}: {mapped_finish_by_partition[i]}\n")
+            f.write(f"mapped_worker_p{i}: {mapped_worker_by_partition[i]}\n")
+        f.write(f"mapped_duration_spread_ms: {mapped_duration_spread}\n")
+        f.write(f"mapped_finish_spread_ms: {mapped_finish_spread}\n")
         f.write(f"phase_compute_delta_s: {t_diff:.3f}\n")
         f.write(f"phase_partition_s: {t_partition:.3f}\n")
         f.write(f"phase_normalize_s: {t_normalize:.3f}\n")

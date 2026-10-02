@@ -1,0 +1,19 @@
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_skew_k4_p000_s4/delta，stale写入 results/work_skew_k4_p000_s4/stale
+[done] 写入 results/work_skew_k4_p000_s4/delta_mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_skew_k4_p000_s4/stale_iris.txt
+baseline=3774001, removed(按subject)=172144, delta_added=172057, updated=3773914
+elapsed_seconds: 12.365336531
