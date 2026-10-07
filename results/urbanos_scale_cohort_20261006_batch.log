@@ -1,0 +1,885 @@
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u10_s1/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u10_s1/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u10_s1/delta_mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u10_s1/stale_iris.txt
+baseline=3774001, removed(按subject)=172129, delta_added=172062, updated=3773934
+elapsed_seconds: 12.081192703
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u10_s1.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u10_s1.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s1/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s1/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s1/stale_iris.txt
+baseline=3774001, removed(按subject)=172129, delta_added=172062, updated=3773934
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u10_after_seed1 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s1/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s1/stale
+[partition] k=4, 各分区行数=[7170, 7230, 7005, 7272]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s1/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u10_s1-p3 status=ok attempts=0 mapped=3787ms worker=f1c975ca90f3 lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u10_s1-p2 status=ok attempts=0 mapped=3800ms worker=2e9efd3cf9df lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u10_s1-p0 status=ok attempts=0 mapped=3838ms worker=42f17060e279 lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u10_s1-p1 status=ok attempts=0 mapped=3837ms worker=51c8d4df0c7c lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u10_s1/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u10_s1/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u10_s1/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u10_s1/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u10_s1/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u10_s1.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u10_s1.nq
+[done] 端到端耗时 12.33s -> results/time_distributed_urbanos_scale_cohort_20261006_u10_s1.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u25_s1/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u25_s1/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u25_s1/delta_mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u25_s1/stale_iris.txt
+baseline=3774001, removed(按subject)=430258, delta_added=430133, updated=3773876
+elapsed_seconds: 15.642275052
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u25_s1.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u25_s1.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s1/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s1/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s1/stale_iris.txt
+baseline=3774001, removed(按subject)=430258, delta_added=430133, updated=3773876
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u25_after_seed1 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s1/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s1/stale
+[partition] k=4, 各分区行数=[18170, 18067, 17243, 18213]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s1/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u25_s1-p0 status=ok attempts=0 mapped=2493ms worker=f1c975ca90f3 lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u25_s1-p2 status=ok attempts=0 mapped=2665ms worker=42f17060e279 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u25_s1-p1 status=ok attempts=0 mapped=2739ms worker=2e9efd3cf9df lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u25_s1-p3 status=ok attempts=0 mapped=2888ms worker=51c8d4df0c7c lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u25_s1/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u25_s1/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u25_s1/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u25_s1/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u25_s1/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u25_s1.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u25_s1.nq
+[done] 端到端耗时 12.69s -> results/time_distributed_urbanos_scale_cohort_20261006_u25_s1.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u50_s1/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u50_s1/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u50_s1/delta_mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u50_s1/stale_iris.txt
+baseline=3774001, removed(按subject)=860180, delta_added=860221, updated=3774042
+elapsed_seconds: 21.281968597
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u50_s1.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u50_s1.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s1/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s1/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s1/stale_iris.txt
+baseline=3774001, removed(按subject)=860180, delta_added=860221, updated=3774042
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u50_after_seed1 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s1/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s1/stale
+[partition] k=4, 各分区行数=[36411, 36331, 34580, 36064]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s1/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u50_s1-p2 status=ok attempts=0 mapped=3240ms worker=2e9efd3cf9df lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u50_s1-p3 status=ok attempts=0 mapped=3237ms worker=51c8d4df0c7c lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u50_s1-p0 status=ok attempts=0 mapped=3410ms worker=f1c975ca90f3 lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u50_s1-p1 status=ok attempts=0 mapped=3517ms worker=42f17060e279 lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u50_s1/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u50_s1/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u50_s1/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u50_s1/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u50_s1/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u50_s1.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u50_s1.nq
+[done] 端到端耗时 15.00s -> results/time_distributed_urbanos_scale_cohort_20261006_u50_s1.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s2/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s2/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s2/stale_iris.txt
+baseline=3774001, removed(按subject)=430247, delta_added=430123, updated=3773877
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u25_after_seed2 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s2/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s2/stale
+[partition] k=4, 各分区行数=[18416, 18017, 17308, 17952]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s2/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u25_s2-p2 status=ok attempts=0 mapped=1399ms worker=f1c975ca90f3 lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u25_s2-p0 status=ok attempts=0 mapped=1492ms worker=2e9efd3cf9df lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u25_s2-p1 status=ok attempts=0 mapped=1595ms worker=51c8d4df0c7c lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u25_s2-p3 status=ok attempts=0 mapped=1615ms worker=42f17060e279 lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u25_s2/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u25_s2/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u25_s2/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u25_s2/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u25_s2/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u25_s2.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u25_s2.nq
+[done] 端到端耗时 10.95s -> results/time_distributed_urbanos_scale_cohort_20261006_u25_s2.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u25_s2/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u25_s2/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u25_s2/delta_mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u25_s2/stale_iris.txt
+baseline=3774001, removed(按subject)=430247, delta_added=430123, updated=3773877
+elapsed_seconds: 15.478161363
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u25_s2.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u25_s2.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s2/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s2/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s2/stale_iris.txt
+baseline=3774001, removed(按subject)=860178, delta_added=860226, updated=3774049
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u50_after_seed2 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s2/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s2/stale
+[partition] k=4, 各分区行数=[36497, 36412, 34414, 36063]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s2/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u50_s2-p2 status=ok attempts=0 mapped=2468ms worker=51c8d4df0c7c lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u50_s2-p3 status=ok attempts=0 mapped=2829ms worker=42f17060e279 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u50_s2-p0 status=ok attempts=0 mapped=2860ms worker=f1c975ca90f3 lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u50_s2-p1 status=ok attempts=0 mapped=2859ms worker=2e9efd3cf9df lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u50_s2/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u50_s2/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u50_s2/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u50_s2/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u50_s2/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u50_s2.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u50_s2.nq
+[done] 端到端耗时 15.70s -> results/time_distributed_urbanos_scale_cohort_20261006_u50_s2.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u50_s2/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u50_s2/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u50_s2/delta_mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u50_s2/stale_iris.txt
+baseline=3774001, removed(按subject)=860178, delta_added=860226, updated=3774049
+elapsed_seconds: 22.783613711
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u50_s2.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u50_s2.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s2/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s2/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s2/stale_iris.txt
+baseline=3774001, removed(按subject)=172145, delta_added=172062, updated=3773918
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u10_after_seed2 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s2/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s2/stale
+[partition] k=4, 各分区行数=[7278, 7250, 6912, 7237]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s2/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u10_s2-p2 status=ok attempts=0 mapped=582ms worker=f1c975ca90f3 lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u10_s2-p1 status=ok attempts=0 mapped=618ms worker=42f17060e279 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u10_s2-p0 status=ok attempts=0 mapped=746ms worker=51c8d4df0c7c lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u10_s2-p3 status=ok attempts=0 mapped=748ms worker=2e9efd3cf9df lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u10_s2/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u10_s2/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u10_s2/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u10_s2/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u10_s2/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u10_s2.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u10_s2.nq
+[done] 端到端耗时 9.42s -> results/time_distributed_urbanos_scale_cohort_20261006_u10_s2.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u10_s2/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u10_s2/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u10_s2/delta_mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u10_s2/stale_iris.txt
+baseline=3774001, removed(按subject)=172145, delta_added=172062, updated=3773918
+elapsed_seconds: 11.165003360
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u10_s2.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u10_s2.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u50_s3/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u50_s3/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u50_s3/delta_mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u50_s3/stale_iris.txt
+baseline=3774001, removed(按subject)=860234, delta_added=860216, updated=3773983
+elapsed_seconds: 21.849844693
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u50_s3.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u50_s3.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s3/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s3/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s3/stale_iris.txt
+baseline=3774001, removed(按subject)=860234, delta_added=860216, updated=3773983
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u50_after_seed3 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s3/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s3/stale
+[partition] k=4, 各分区行数=[36454, 36288, 34494, 36150]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s3/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u50_s3-p2 status=ok attempts=0 mapped=2659ms worker=51c8d4df0c7c lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u50_s3-p1 status=ok attempts=0 mapped=2785ms worker=42f17060e279 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u50_s3-p3 status=ok attempts=0 mapped=2829ms worker=2e9efd3cf9df lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u50_s3-p0 status=ok attempts=0 mapped=2883ms worker=f1c975ca90f3 lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u50_s3/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u50_s3/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u50_s3/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u50_s3/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u50_s3/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u50_s3.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u50_s3.nq
+[done] 端到端耗时 15.82s -> results/time_distributed_urbanos_scale_cohort_20261006_u50_s3.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u10_s3/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u10_s3/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u10_s3/delta_mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u10_s3/stale_iris.txt
+baseline=3774001, removed(按subject)=172147, delta_added=172062, updated=3773916
+elapsed_seconds: 13.625781522
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u10_s3.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u10_s3.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s3/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s3/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s3/stale_iris.txt
+baseline=3774001, removed(按subject)=172147, delta_added=172062, updated=3773916
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u10_after_seed3 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s3/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s3/stale
+[partition] k=4, 各分区行数=[7280, 7229, 6888, 7280]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s3/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u10_s3-p1 status=ok attempts=0 mapped=510ms worker=42f17060e279 lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u10_s3-p0 status=ok attempts=0 mapped=524ms worker=51c8d4df0c7c lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u10_s3-p2 status=ok attempts=0 mapped=730ms worker=2e9efd3cf9df lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u10_s3-p3 status=ok attempts=0 mapped=751ms worker=f1c975ca90f3 lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u10_s3/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u10_s3/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u10_s3/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u10_s3/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u10_s3/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u10_s3.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u10_s3.nq
+[done] 端到端耗时 9.35s -> results/time_distributed_urbanos_scale_cohort_20261006_u10_s3.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u25_s3/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u25_s3/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u25_s3/delta_mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u25_s3/stale_iris.txt
+baseline=3774001, removed(按subject)=430270, delta_added=430143, updated=3773874
+elapsed_seconds: 16.421402106
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u25_s3.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u25_s3.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s3/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s3/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s3/stale_iris.txt
+baseline=3774001, removed(按subject)=430270, delta_added=430143, updated=3773874
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u25_after_seed3 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s3/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s3/stale
+[partition] k=4, 各分区行数=[18290, 18052, 17171, 18180]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s3/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u25_s3-p2 status=ok attempts=0 mapped=1352ms worker=2e9efd3cf9df lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u25_s3-p3 status=ok attempts=0 mapped=1433ms worker=f1c975ca90f3 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u25_s3-p0 status=ok attempts=0 mapped=1503ms worker=42f17060e279 lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u25_s3-p1 status=ok attempts=0 mapped=1576ms worker=51c8d4df0c7c lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u25_s3/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u25_s3/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u25_s3/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u25_s3/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u25_s3/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u25_s3.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u25_s3.nq
+[done] 端到端耗时 11.36s -> results/time_distributed_urbanos_scale_cohort_20261006_u25_s3.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s4/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s4/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s4/stale_iris.txt
+baseline=3774001, removed(按subject)=172102, delta_added=172047, updated=3773946
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u10_after_seed4 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s4/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s4/stale
+[partition] k=4, 各分区行数=[7298, 7124, 7010, 7245]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s4/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u10_s4-p0 status=ok attempts=0 mapped=562ms worker=2e9efd3cf9df lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u10_s4-p3 status=ok attempts=0 mapped=608ms worker=51c8d4df0c7c lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u10_s4-p1 status=ok attempts=0 mapped=686ms worker=f1c975ca90f3 lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u10_s4-p2 status=ok attempts=0 mapped=775ms worker=42f17060e279 lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u10_s4/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u10_s4/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u10_s4/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u10_s4/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u10_s4/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u10_s4.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u10_s4.nq
+[done] 端到端耗时 9.13s -> results/time_distributed_urbanos_scale_cohort_20261006_u10_s4.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u10_s4/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u10_s4/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u10_s4/delta_mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u10_s4/stale_iris.txt
+baseline=3774001, removed(按subject)=172102, delta_added=172047, updated=3773946
+elapsed_seconds: 12.244645050
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u10_s4.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u10_s4.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s4/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s4/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s4/stale_iris.txt
+baseline=3774001, removed(按subject)=430202, delta_added=430133, updated=3773932
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u25_after_seed4 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s4/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s4/stale
+[partition] k=4, 各分区行数=[18276, 18138, 17173, 18106]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s4/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u25_s4-p3 status=ok attempts=0 mapped=1248ms worker=42f17060e279 lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u25_s4-p1 status=ok attempts=0 mapped=1344ms worker=51c8d4df0c7c lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u25_s4-p2 status=ok attempts=0 mapped=1377ms worker=f1c975ca90f3 lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u25_s4-p0 status=ok attempts=0 mapped=1396ms worker=2e9efd3cf9df lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u25_s4/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u25_s4/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u25_s4/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u25_s4/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u25_s4/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u25_s4.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u25_s4.nq
+[done] 端到端耗时 11.68s -> results/time_distributed_urbanos_scale_cohort_20261006_u25_s4.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u25_s4/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u25_s4/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u25_s4/delta_mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u25_s4/stale_iris.txt
+baseline=3774001, removed(按subject)=430202, delta_added=430133, updated=3773932
+elapsed_seconds: 15.575304479
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u25_s4.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u25_s4.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s4/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s4/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s4/stale_iris.txt
+baseline=3774001, removed(按subject)=860166, delta_added=860221, updated=3774056
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u50_after_seed4 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s4/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s4/stale
+[partition] k=4, 各分区行数=[36277, 36216, 34676, 36217]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s4/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u50_s4-p2 status=ok attempts=0 mapped=2449ms worker=f1c975ca90f3 lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u50_s4-p0 status=ok attempts=0 mapped=2511ms worker=42f17060e279 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u50_s4-p3 status=ok attempts=0 mapped=2515ms worker=2e9efd3cf9df lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u50_s4-p1 status=ok attempts=0 mapped=2614ms worker=51c8d4df0c7c lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u50_s4/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u50_s4/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u50_s4/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u50_s4/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u50_s4/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u50_s4.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u50_s4.nq
+[done] 端到端耗时 14.14s -> results/time_distributed_urbanos_scale_cohort_20261006_u50_s4.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u50_s4/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u50_s4/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u50_s4/delta_mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u50_s4/stale_iris.txt
+baseline=3774001, removed(按subject)=860166, delta_added=860221, updated=3774056
+elapsed_seconds: 21.747784261
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u50_s4.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u50_s4.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u25_s5/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u25_s5/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u25_s5/delta_mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u25_s5/stale_iris.txt
+baseline=3774001, removed(按subject)=430289, delta_added=430138, updated=3773850
+elapsed_seconds: 14.771580791
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u25_s5.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u25_s5.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=23897, update=47796, stale(待删除旧行)=71693
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 71693
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s5/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s5/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 71693 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u25_s5/stale_iris.txt
+baseline=3774001, removed(按subject)=430289, delta_added=430138, updated=3773850
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u25_after_seed5 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s5/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u25_s5/stale
+[partition] k=4, 各分区行数=[18158, 18181, 17200, 18154]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u25_s5/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u25_s5-p2 status=ok attempts=0 mapped=1209ms worker=2e9efd3cf9df lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u25_s5-p0 status=ok attempts=0 mapped=1251ms worker=f1c975ca90f3 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u25_s5-p3 status=ok attempts=0 mapped=1262ms worker=51c8d4df0c7c lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u25_s5-p1 status=ok attempts=0 mapped=1330ms worker=42f17060e279 lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u25_s5/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u25_s5/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u25_s5/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u25_s5/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u25_s5/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u25_s5.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u25_s5.nq
+[done] 端到端耗时 10.14s -> results/time_distributed_urbanos_scale_cohort_20261006_u25_s5.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u50_s5/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u50_s5/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u50_s5/delta_mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u50_s5/stale_iris.txt
+baseline=3774001, removed(按subject)=860113, delta_added=860201, updated=3774089
+elapsed_seconds: 20.933510783
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u50_s5.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u50_s5.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=47795, update=95591, stale(待删除旧行)=143386
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 143386
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s5/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s5/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 143386 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u50_s5/stale_iris.txt
+baseline=3774001, removed(按subject)=860113, delta_added=860201, updated=3774089
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u50_after_seed5 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s5/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u50_s5/stale
+[partition] k=4, 各分区行数=[36344, 36326, 34632, 36084]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u50_s5/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u50_s5-p2 status=ok attempts=0 mapped=2477ms worker=51c8d4df0c7c lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u50_s5-p3 status=ok attempts=0 mapped=2523ms worker=42f17060e279 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u50_s5-p0 status=ok attempts=0 mapped=2629ms worker=2e9efd3cf9df lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u50_s5-p1 status=ok attempts=0 mapped=2672ms worker=f1c975ca90f3 lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u50_s5/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u50_s5/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u50_s5/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u50_s5/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u50_s5/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u50_s5.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u50_s5.nq
+[done] 端到端耗时 13.61s -> results/time_distributed_urbanos_scale_cohort_20261006_u50_s5.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_urbanos_scale_cohort_20261006_u10_s5/delta，stale写入 results/work_urbanos_scale_cohort_20261006_u10_s5/stale
+[done] 写入 results/work_urbanos_scale_cohort_20261006_u10_s5/delta_mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_urbanos_scale_cohort_20261006_u10_s5/stale_iris.txt
+baseline=3774001, removed(按subject)=172140, delta_added=172062, updated=3773923
+elapsed_seconds: 11.067328637
+result graph: results/kg_incremental_urbanos_scale_cohort_20261006_u10_s5.nq
+time log: results/time_incremental_urbanos_scale_cohort_20261006_u10_s5.log
+agency.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar.txt: insert=0, update=0, stale(待删除旧行)=0
+calendar_dates.txt: insert=0, update=0, stale(待删除旧行)=0
+[跳过] fare_attributes.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] fare_rules.txt（无对照文件或未配置主键，delta_dir中保留原样）
+[跳过] feed_info.txt（无对照文件或未配置主键，delta_dir中保留原样）
+frequencies.txt: insert=0, update=0, stale(待删除旧行)=0
+routes.txt: insert=0, update=0, stale(待删除旧行)=0
+shapes.txt: insert=0, update=0, stale(待删除旧行)=0
+stop_times.txt: insert=9559, update=19118, stale(待删除旧行)=28677
+stops.txt: insert=0, update=0, stale(待删除旧行)=0
+trips.txt: insert=0, update=0, stale(待删除旧行)=0
+
+delta_rows: 28677
+[完成] delta写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s5/delta，stale写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s5/stale
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_0/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_1/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_2/mapping.ttl；替换了 1 处source路径
+[done] 写入 /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_3/mapping.ttl；替换了 1 处source路径
+[done] 28677 条待删除IRI写入 results/work_dist_urbanos_scale_cohort_20261006_u10_s5/stale_iris.txt
+baseline=3774001, removed(按subject)=172140, delta_added=172062, updated=3773923
+[sh] /home/ztr/miniconda3/bin/python3 compute_delta.py --before data/urbanos_before --after data/u10_after_seed5 --delta-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s5/delta --stale-dir results/work_dist_urbanos_scale_cohort_20261006_u10_s5/stale
+[partition] k=4, 各分区行数=[7266, 7248, 6939, 7224]
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_0 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_0/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_1 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_1/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_2 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_2/mapping.ttl
+[sh] /home/ztr/miniconda3/bin/python3 normalize_mapping.py --mapping delta_mapping_base.ttl --data-dir /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_3 --output /home/ztr/KG/dist_work/urbanos_scale_cohort_20261006_u10_s5/partition_3/mapping.ttl
+[dispatch] 已推送4个任务到tasks:queue
+[result] urbanos_scale_cohort_20261006_u10_s5-p2 status=ok attempts=0 mapped=465ms worker=2e9efd3cf9df lock_wait=0ms (1/4)
+[result] urbanos_scale_cohort_20261006_u10_s5-p3 status=ok attempts=0 mapped=493ms worker=f1c975ca90f3 lock_wait=0ms (2/4)
+[result] urbanos_scale_cohort_20261006_u10_s5-p0 status=ok attempts=0 mapped=545ms worker=51c8d4df0c7c lock_wait=0ms (3/4)
+[result] urbanos_scale_cohort_20261006_u10_s5-p1 status=ok attempts=0 mapped=546ms worker=42f17060e279 lock_wait=0ms (4/4)
+[merge] 合并完成 -> results/work_dist_urbanos_scale_cohort_20261006_u10_s5/merged_delta.nq
+[sh] /home/ztr/miniconda3/bin/python3 compute_stale_iris.py --stale-file results/work_dist_urbanos_scale_cohort_20261006_u10_s5/stale/stop_times.txt --template http://transport.linkeddata.es/madrid/metro/stoptimes/{trip_id}-{stop_id}-{arrival_time} --output results/work_dist_urbanos_scale_cohort_20261006_u10_s5/stale_iris.txt
+[sh] /home/ztr/miniconda3/bin/python3 apply_delta_to_graph.py --baseline results/baseline_graph_urbanos.nq --stale-iris results/work_dist_urbanos_scale_cohort_20261006_u10_s5/stale_iris.txt --delta results/work_dist_urbanos_scale_cohort_20261006_u10_s5/merged_delta.nq --output results/kg_distributed_urbanos_scale_cohort_20261006_u10_s5.nq
+
+[done] 分布式增量更新完成: results/kg_distributed_urbanos_scale_cohort_20261006_u10_s5.nq
+[done] 端到端耗时 8.29s -> results/time_distributed_urbanos_scale_cohort_20261006_u10_s5.log
