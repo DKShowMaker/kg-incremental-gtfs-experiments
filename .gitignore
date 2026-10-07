@@ -7,6 +7,8 @@ dist_work/
 results/*.nq
 results/work_*/
 results/work_dist_*/
+results/skew_subpartition_k*/work_dist_*/
+results/skew_subpartition_k*/current_graph_check.nq
 tmp_sort/
 nohup.out
 __pycache__/

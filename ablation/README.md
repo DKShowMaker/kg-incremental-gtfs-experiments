@@ -53,3 +53,23 @@ bash ablation/run_skew_matrix.sh
 矩阵为 `p={0, 0.25, 0.5, 0.75, 1}` × `seed={1..5}`，逐档配对运行单线程与分布式更新。每档首个 seed 保留原始数据但不纳入稳态汇总。结果写入 `results/skew_raw_k4.csv` 和 `results/skew_summary_k4.csv`。脚本遇到已存在的本矩阵输出会停止，避免覆盖已有数据。若改用其他 k，例如 `K=8 bash ablation/run_skew_matrix.sh`，需先以 8 个 Worker 启动 Compose；新 k 会生成独立输入目录。
 
 **对照解释限制**：p=0走倾斜生成器的专用分支，虽然抽样仍均匀，但随机数调用顺序不同，故同seed变更行与普通10%生成路径不同。p=0仅是本倾斜矩阵内部对照，不能与历史标准10%记录按逐seed完全同样本比较。2026-10的标准路径复核及两者差异见`docs/实验报告.md`第7.7节；在统一生成样本并复测前，不把历史扩展表和倾斜矩阵解释为同会话可比结果。
+
+## 7. 热点分区细粒度任务拆分
+
+`run_distributed_update.py`可按映射ΔD的分区倾斜度`s_i = k × rows_i / M`自动细分热点分区。传入`--subpartition-threshold 1.7`后，超过阈值的分区最多拆成`k`个行数均衡的子目录/任务；每个子任务有自己的CSV、mapping和不重叠的逻辑key子集。任务共用Redis `versions`哈希，但只对自身key取版本快照并提交，因此同一原始分区的子任务不产生OCC写冲突。合并时按原partition_id、subpartition_id排序，最终映射delta与未拆分应一致。
+
+冲突注入可与子分区同时使用。注入副本被分配到相邻原分区，因此同一逻辑key只会在不同父分区任务间重叠，不会在同一父分区的兄弟子任务间重叠。提交栅栏按非空任务数和Worker数取较小值，避免热点输入下等待不存在的分区；拆分任务按子块层次交错派发，使首批任务尽量包含不同父分区。冲突率指复制行数占原始ΔD的比例，不等于OCC实际重试率，两项需分开报告。
+
+原矩阵和历史结果不会被覆盖。完成原矩阵后，保持相同k个worker运行：
+
+```bash
+bash ablation/run_skew_subpartition_matrix.sh
+```
+
+新脚本在相同25份固定倾斜快照上配对执行未拆分/自动拆分两种调度；seed间轮换p顺序，每对交替先后顺序。它逐对检查合并后的delta，并用p=0/seed5单线程图谱抽查完整输出正确性。seed1保留但不进入稳态汇总。结果另存到`results/skew_subpartition_k<K>_<cohort>/`，包括时间日志、逐seed原始CSV、汇总CSV、完整批处理日志和运行环境/输入哈希清单。主要比较量为端到端耗时与worker映射时间负载差；子任务数增加产生的分区/规范化/调度开销也包含在端到端结果内。
+
+在相同倾斜矩阵上注入25%冲突并配对子分区实验，可用独立cohort保存结果，不覆盖无冲突矩阵：
+
+```bash
+CONFLICT_RATE=0.25 COHORT=skew_subpartition_conflict25_YYYYMMDD bash ablation/run_skew_subpartition_matrix.sh
+```
